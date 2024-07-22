@@ -34,7 +34,8 @@ const props = defineProps(['tasks']);
                                     <td class="px-6 py-4 whitespace-nowrap text-sm border border-black/10 text-center">{{ task.title }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm border border-black/10 text-center">{{ task.description }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm border border-black/10 text-center">
-                                        <!-- Progress info can be added here -->
+                                        <p v-if="task.progress == 1">True</p>
+                                        <p v-else-if="task.progress == 0">False</p>
                                     </td>
                                     <td class="flex justify-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border border-black/10">
                                         <div class="flex items-center space-x-4">

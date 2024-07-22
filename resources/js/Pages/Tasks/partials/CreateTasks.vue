@@ -1,6 +1,5 @@
 <script setup>
 import Modal from '@/Components/Modal.vue';
-import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -24,8 +23,10 @@ const closeModal = () => {
     form.reset();
 }
 
-const submit = () => {
-    form.post(route('tasks.index'))
+const addTask = () => {
+    form.post(route('tasks.index'), {
+        onSuccess: () => closeModal(),
+    });
 }
 
 </script>
@@ -74,12 +75,12 @@ const submit = () => {
             </div>
             <div class="flex justify-center items-center">
                 <PrimaryButton
-                    type="submit"
                     class="border rounded-lg bg-green-500 hover:bg-green-700 text-neutral-50 px-6 py-4"
                     :disabled="form.processing"
+                    @click="addTask"
                     >
-                                    Save New Task
-                                </PrimaryButton>
+                    Save New Task
+                </PrimaryButton>
             </div>
         </div>
     </form>
