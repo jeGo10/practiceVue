@@ -41,7 +41,7 @@ const editTask = () => {
 </script>
 
 <template>
-    <PrimaryButton @click="updateTask" class="bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-900">Edit</PrimaryButton>
+    <PrimaryButton @click="updateTask" class="bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-900"><i class="fa fa-edit text-white-500 text-sm"></i></PrimaryButton>
 
     <section>
         <Modal :show="editingTask" @close="closeModal">

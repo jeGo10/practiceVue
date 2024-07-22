@@ -2,6 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import CreateTasks from './partials/CreateTasks.vue';
 import UpdateTask from './partials/UpdateTask.vue';
+import DeleteTask from './partials/DeleteTask.vue'
 import { Head } from '@inertiajs/vue3';
 
 const props = defineProps(['tasks']);
@@ -44,6 +45,7 @@ const props = defineProps(['tasks']);
                                         <div class="flex items-center space-x-4">
                                             <!-- Action buttons can be added here -->
                                             <UpdateTask :task="task"/>
+                                            <DeleteTask :task="task"/>
                                         </div>
                                     </td>
                                 </tr>
