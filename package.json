@@ -18,6 +18,8 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "admin-lte": "^4.0.0-beta1",
+        "bootstrap": "^4.6.0",
         "dayjs": "^1.11.12"
     }
 }
