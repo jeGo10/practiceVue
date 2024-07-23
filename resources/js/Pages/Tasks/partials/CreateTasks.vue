@@ -75,7 +75,6 @@ const addTask = () => {
             </div>
             <div class="flex justify-center items-center">
                 <PrimaryButton
-                    class="border rounded-lg bg-green-600 hover:bg-green-500 text-neutral-50 px-6 py-4"
                     :disabled="form.processing"
                     @click="addTask"
                     >
