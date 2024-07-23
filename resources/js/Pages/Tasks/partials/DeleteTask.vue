@@ -1,7 +1,6 @@
 <script setup>
 import Modal from '@/Components/Modal.vue';
 import DangerButton from '@/Components/DangerButton.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -50,7 +49,7 @@ const destroyTask = () => {
 
             <!-- Body -->
             <div class="flex items-center justify-start m-10">
-                <h1>
+                <h1 class="text-xl">
                     Are you sure you want to delete {{ task.title }}?
                 </h1>
             </div>
