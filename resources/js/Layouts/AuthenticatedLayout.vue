@@ -13,13 +13,13 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div class="min-h-screen flex flex-col sm:flex-row">
         <!-- Sidebar -->
-        <aside class="bg-slate-700 h-screen w-full sm:w-64 flex-shrink-0">
+        <aside class="bg-slate-800 h-screen w-full sm:w-64 flex-shrink-0">
             <div class="h-full flex flex-col justify-between">
                 <!-- Primary Navigation Menu -->
                 <div>
-                    <div class="flex flex-col items-center mt-2">
+                    <div class="flex flex-col items-center m-2">
                         <!-- Logo -->
-                        <div class="shrink-0 mb-4 flex items-center">
+                        <div class="shrink-0 m-2.5 flex items-center">
                             <Link :href="route('dashboard')" class="no-underline text-white flex items-center">
                                 <img src="/images/dict-logo.png" class="block h-10" alt="Logo" />
                                 <span class="brand-text font-light ml-2">QMS DICT</span>
@@ -27,13 +27,13 @@ const showingNavigationDropdown = ref(false);
                         </div>
                         <!-- Navigation Links -->
                         <div class="space-y-1 w-full flex flex-col">
-                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="bg-black items-center">
-                                Dashboard
+                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="px-4">
+                                <i class="fa fa-home text-lg"></i><span class="ml-2">Home</span>
                             </NavLink>
-                            <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="text-neutral-50">
+                            <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="px-4">
                                 Chirps
                             </NavLink>
-                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="text-neutral-50">
+                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="px-4">
                                 Tasks
                             </NavLink>
                         </div>
@@ -94,21 +94,14 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </div>
 
-            <nav class="bg-dark border-b border-dark">
+            <nav class="bg-slate-800 border-b border-dark">
                 <!-- Top Bar -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
 
-                            <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="text-neutral-300 hover:text-neutral-50">
-                                    Chirps
-                                </NavLink>
-                                <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="text-neutral-300 hover:text-neutral-50">
-                                    Tasks
-                                </NavLink>
-                            </div>
+                            <!-- Navigation/Tab Links -->
+
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ms-6">
