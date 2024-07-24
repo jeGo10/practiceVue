@@ -14,7 +14,7 @@ const showingNavigationDropdown = ref(false);
     <div class="min-h-screen flex flex-col sm:flex-row">
         <!-- Sidebar -->
         <aside class="bg-slate-800 h-screen w-full sm:w-64 flex-shrink-0">
-            <div class="h-full flex flex-col justify-between">
+            <div class="h-screen flex flex-col justify-between">
                 <!-- Primary Navigation Menu -->
                 <div>
                     <div class="flex flex-col items-center m-2">
