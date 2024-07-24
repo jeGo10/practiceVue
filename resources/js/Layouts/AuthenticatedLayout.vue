@@ -17,24 +17,23 @@ const showingNavigationDropdown = ref(false);
             <div class="h-full flex flex-col justify-between">
                 <!-- Primary Navigation Menu -->
                 <div>
-                    <div class="flex flex-col items-center mt-4">
+                    <div class="flex flex-col items-center mt-2">
                         <!-- Logo -->
-                        <div class="shrink-0 items-center mb-4">
-                            <Link :href="route('dashboard')" class="no-underline text-white">
-                                <img src="/images/dict-logo.png" class="block h-9" />
-                                <span class="brand-text  font-weight-light ">QMS DICT</span>
+                        <div class="shrink-0 mb-4 flex items-center">
+                            <Link :href="route('dashboard')" class="no-underline text-white flex items-center">
+                                <img src="/images/dict-logo.png" class="block h-10" alt="Logo" />
+                                <span class="brand-text font-light ml-2">QMS DICT</span>
                             </Link>
                         </div>
-
                         <!-- Navigation Links -->
                         <div class="space-y-1 w-full flex flex-col">
-                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="text-neutral-50 py-1">
+                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="bg-black items-center">
                                 Dashboard
                             </NavLink>
-                            <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="text-neutral-50 py-1">
+                            <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="text-neutral-50">
                                 Chirps
                             </NavLink>
-                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="text-neutral-50 py-1">
+                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="text-neutral-50">
                                 Tasks
                             </NavLink>
                         </div>
