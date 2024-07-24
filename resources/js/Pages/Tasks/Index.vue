@@ -24,42 +24,46 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
             <div class="card border rounded-lg shadow-lg">
                 <div class="card-header flex justify-between items-center p-4 bg-gray-100">
                     <h1 class="text-xl font-bold">Tasks</h1>
-                    <div class="justify-end">
+                    <div>
                         <CreateTasks />
                     </div>
                 </div>
                 <div class="card-body p-4">
                     <!-- All Tasks Tab -->
                      <!-- Tab Navigation -->
-                    <ul class="nav nav-tabs flex border-b">
+                     <ul class="nav nav-tabs flex">
                         <li class="nav-item">
                             <a
                                 @click="currentTab = 'all'"
-                                :class="{'nav-link': true, 'border-b-2': currentTab === 'all', 'border-blue-500': currentTab === 'all', 'text-gray-500': currentTab === 'all', 'hover:border-blue-500': currentTab !== 'all'}"
-                                href="#all"
-                            >
-                                All
+                                :class="{
+                                    'nav-link': true,
+                                    'active': currentTab === 'all'
+                                }"
+                                href="#all"> All
                             </a>
                         </li>
                         <li class="nav-item">
                             <a
                                 @click="currentTab = 'complete'"
-                                :class="{'nav-link': true, 'border-b-2': currentTab === 'complete', 'border-blue-500': currentTab === 'complete', 'text-gray-500': currentTab === 'complete', 'hover:border-blue-500': currentTab !== 'complete'}"
-                                href="#complete"
-                            >
-                                Complete
+                                :class="{
+                                    'nav-link': true,
+                                    'active': currentTab === 'complete'
+                                }"
+                                href="#complete"> Complete
                             </a>
                         </li>
                         <li class="nav-item">
                             <a
                                 @click="currentTab = 'incomplete'"
-                                :class="{'nav-link': true, 'border-b-2': currentTab === 'incomplete', 'border-blue-500': currentTab === 'incomplete', 'text-gray-500': currentTab === 'incomplete', 'hover:border-blue-500': currentTab !== 'incomplete'}"
-                                href="#incomplete"
-                            >
-                                Incomplete
+                                :class="{
+                                    'nav-link': true,
+                                    'active': currentTab === 'incomplete'
+                                }"
+                                href="#incomplete"> Incomplete
                             </a>
                         </li>
                     </ul>
+
                     <div v-if="currentTab === 'all'">
                         <table class="table-auto w-full border border-gray-200">
                             <thead>
