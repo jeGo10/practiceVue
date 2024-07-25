@@ -124,18 +124,32 @@ const changeTab = (tabName) => {
               <!-- Quality Objectives Tab -->
               <div v-if="activeTab === 'qualityobjectives'" class="tab-pane fade show active">
                 <div class="card-body">
-                  <h3 class="entry-title text-center"><strong>Quality Objectives</strong></h3>
-                  <p class="entry-title text-center"><i>QP-01/r0/01Feb24</i></p>
+                  <div class="container mx-auto mt-4" style="max-width: 1500px;">
+                      <div class="card border rounded-lg shadow-lg">
+                        <br>
+                        <h3 class="entry-title text-center"><strong>Quality Objectives</strong></h3>
+                        <p class="entry-title text-center"><i>QP-01/r0/01Feb24</i></p>
+                        <div class="card-header items-center p-1 bg-gray-100"></div>
                   <br>
                   <ol>
                     <li>To deliver the required ICT products and services according to mutually agreed terms and conditions and existing applicable statutory and regulatory requirements;</li>
                     <li>To ensure the effective implementation, compliance, and continuous improvement of the Quality Management System in order to meet customer requirements;</li>
                     <li>To monitor and evaluate adherence to the agency's Key Performance Indicators (KPI) on quality, efficiency, and timeliness.</li>
                   </ol>
+                      </div>
+                  </div>
                   <br>
-                  <h3 class="entry-title text-center"><strong>ADMINISTRATIVE AND FINANCE DIVISION (AFD) QUALITY OBJECTIVES</strong></h3>
-                  <p class="entry-title text-center"><i>QO-02/r2/18Jun24</i></p>
+                  <br>
+              
+                  <div class="container mx-auto mt-4" style="max-width: 1500px;">
+                      <div class="card border rounded-lg shadow-lg">
+                        <br>
+                        <h3 class="entry-title text-center"><strong>ADMINISTRATIVE AND FINANCE DIVISION (AFD) QUALITY OBJECTIVES</strong></h3>
+                        <p class="entry-title text-center"><i>QO-02/r2/18Jun24</i></p>
+                        <div class="card-header items-center p-1 bg-gray-100"></div>
+                        
                   <ol>
+                    <br>
                     <li>To ensure that all Human Resource Systems are in place in terms of Recruitment, Selection, and Placement; Learning and Development; Performance Management; and Rewards and Recognition with 100% compliance to the Civil Service Commission’s Program to Institutionalize Meritocracy and Excellence in Human Resource Management (PRIME-HRM);</li>
                     <li>To ensure efficient and effective financial management, disbursements, monitoring, and reporting of all statutory/regulatory and legal requirement of government monitoring agencies thru accurate and timely preparation, verification, certification, and submission of financial statements and reports to include monthly, quarterly, and annual Financial Statements and other related reports shall be done in the prescribed deadlines.</li>
                     <li>To ensure timely preparation and submission of annual budget of the Regional Office are accurate and accomplished within the prescribed period set by the DICT Central Office, the Department of Budget and Management (DBM), and other concerned government agencies. To monitor budget utilization rate at 90%.</li>
@@ -144,14 +158,20 @@ const changeTab = (tabName) => {
                     <li>Ensure 100% accuracy and traceability of incoming and outgoing documents, achieve full compliance with statutory and regulatory requirements for document retention and disposal, and guarantee delivery of documents to the designated division or unit within 24 hours of receipt.</li>
                     <li>To attain at least a very satisfactory customer satisfaction rating from 80% of customers surveyed.</li>
                   </ol>
+                      </div>
+                  </div>
+                
                 </div>
               </div>
   
               <!-- Contact Us Tab -->
               <div v-if="activeTab === 'contactus'" class="tab-pane fade show active">
+                <div class="container mx-auto mt-4" style="max-width: 1500px;">
+                      <div class="card border rounded-lg shadow-lg">
                 <div class="card-body" style="padding-top: 100px;"> <!-- Adjust padding-top as needed -->
                   <img src="/images/DMT-Members.jpg" alt="Image"
                   style="display: block; width: 100%; height: auto;">
+                  <div class="card-header items-center p-1 bg-gray-100"></div>
                   <br>
                  
                   <h3 class="entry-title text-center"><strong>Contact Us</strong></h3>
@@ -161,6 +181,8 @@ const changeTab = (tabName) => {
                     <i class="fa fa-globe" aria-hidden="true" style="margin-right: 5px;"></i>www.dict.gov.ph<br>
                     <i class="fa fa-facebook-official" aria-hidden="true" style="margin-right: 5px;"></i>@DICT.RO9BASULTA<br>
                   </p>
+                </div>
+                </div>
                 </div>
               </div>
 
