@@ -5,6 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import SidebarDropdown from '@/Components/SidebarDropdown.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
@@ -27,15 +28,13 @@ const showingNavigationDropdown = ref(false);
                         </div>
                         <!-- Navigation Links -->
                         <div class="space-y-1 w-full flex flex-col">
-                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="px-4">
+                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="">
                                 <i class="fa fa-home text-lg"></i><span class="ml-2">Home</span>
                             </NavLink>
-                            <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="px-4">
-                                Chirps
-                            </NavLink>
-                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="px-4">
-                                Tasks
-                            </NavLink>
+                            <SidebarDropdown />
+                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="pl-8 text-gray-300 hover:text-white hover:bg-slate-600">
+                        Tasks
+                    </NavLink>
                         </div>
                     </div>
                 </div>
