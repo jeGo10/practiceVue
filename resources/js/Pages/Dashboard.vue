@@ -85,18 +85,41 @@ const changeTab = (tabName) => {
   
               <!-- Quality Policy Tab -->
               <div v-if="activeTab === 'qualitypolicy'" class="tab-pane fade show active">
-                <div class="card-body">
-                  <h3 class="entry-title text-center"><strong>Quality Policy</strong></h3>
-                  <p class="entry-title text-center"><i>QPL/r0/01Feb24</i></p>
-                  <br>
-                  <p><strong>The Department of Information and Communications Technology RIX BASULTA commits to:</strong></p>
-                  <ul>
-                    <li>Lead in pushing the National ICT Development agenda in transitioning the Philippines toward a world-class digital economy.</li>
-                    <li>Endeavor to support the achievement of national development goals through innovation and provision of quality and secure information and communications technology (ICT) products and services compliant with pertinent regulatory and statutory requirements and international standards.</li>
-                    <li>Adhere to the continual improvement of its Quality Management System by maintaining highly competent and committed public servants and by delivering quality services that exceed the expectations of its stakeholders.</li>
-                  </ul>
+                  <div class="card-body">
+                    <div class="container mx-auto mt-4" style="max-width: 1500px;">
+                      <div class="card border rounded-lg shadow-lg">
+                        <br>
+                        <div class="card-header items-center p-1 bg-gray-100">
+                          <h3 class="entry-title text-center mb-2"><strong>Quality Policy</strong></h3>
+                          <p class="entry-title text-center mb-3"><i>QPL/r0/01Feb24</i></p>
+
+                          <!-- Quality Policy Content -->
+                          <div>
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- Commitments Section -->
+                        <div class="p-4">
+                          <p><strong>The Department of Information and Communications Technology RIX BASULTA commits to:</strong></p>
+                        
+                          <ul class="list-disc pl-8">
+                            <li>Lead in pushing the National ICT Development agenda in transitioning the Philippines toward a world-class digital economy.</li>
+                            <br>
+                            <li>Endeavor to support the achievement of national development goals through innovation and provision of quality and secure information and communications technology (ICT) products and services compliant with pertinent regulatory and statutory requirements and international standards.</li>
+                            <br>
+                            <li>Adhere to the continual improvement of its Quality Management System by maintaining highly competent and committed public servants and by delivering quality services that exceed the expectations of its stakeholders.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+
+
+
+
   
               <!-- Quality Objectives Tab -->
               <div v-if="activeTab === 'qualityobjectives'" class="tab-pane fade show active">
