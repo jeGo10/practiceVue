@@ -126,7 +126,11 @@ const changeTab = (tabName) => {
   
               <!-- Contact Us Tab -->
               <div v-if="activeTab === 'contactus'" class="tab-pane fade show active">
-                <div class="card-body">
+                <div class="card-body" style="padding-top: 100px;"> <!-- Adjust padding-top as needed -->
+                  <img src="/images/DMT-Members.jpg" alt="Image"
+                  style="display: block; width: 100%; height: auto;">
+                  <br>
+                 
                   <h3 class="entry-title text-center"><strong>Contact Us</strong></h3>
                   <p class="text-center">
                     <i class="fa fa-phone" aria-hidden="true" style="margin-right: 5px;"></i>(062) 991 2742<br>
@@ -136,6 +140,7 @@ const changeTab = (tabName) => {
                   </p>
                 </div>
               </div>
+
             </div>
   
           </div>
