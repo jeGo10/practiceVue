@@ -23,7 +23,7 @@ const changeTab = (tabName) => {
           <div class=" card-body container" style="background-color: white; padding: 0;">
 
             <!-- Tabs for navigation -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs bg-dark" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link" :class="{ 'active': activeTab === 'visionmission' }" @click="changeTab('visionmission')">Vision & Mission</button>
               </li>
@@ -84,23 +84,18 @@ const changeTab = (tabName) => {
               </div>
 
               <!-- Quality Policy Tab -->
-              <div v-if="activeTab === 'qualitypolicy'" class="tab-pane fade show active">
-                  <div class="">
+              <div v-if="activeTab === 'qualitypolicy'" class="tab-pane fade show active ">
+                  <div class="card-border">
                     <div class="container mx-auto mt-4" style="max-width: 1500px;">
-                      <div class="card border rounded-lg shadow-lg">
+                      <div class="">
                         <br>
-                        <div class="card-header items-center p-1 bg-gray-100">
-                          <h3 class="entry-title text-center mb-2"><strong>Quality Policy</strong></h3>
-                          <p class="entry-title text-center mb-3"><i>QPL/r0/01Feb24</i></p>
+                        <div class="items-center p-1">
+                          <h3 class="entry-title text-center mb-2 "><strong>Quality Policy</strong></h3>
+                          <p class="entry-title text-center mb-3 "><i>QPL/r0/01Feb24</i></p>
 
                           <!-- Quality Policy Content -->
-                          <div>
-                            <p></p>
-                          </div>
-                        </div>
-
                         <!-- Commitments Section -->
-                        <div class="p-4">
+
                           <p><strong>The Department of Information and Communications Technology RIX BASULTA commits to:</strong></p>
 
                           <ul class="list-disc pl-8">
@@ -110,6 +105,7 @@ const changeTab = (tabName) => {
                             <br>
                             <li>Adhere to the continual improvement of its Quality Management System by maintaining highly competent and committed public servants and by delivering quality services that exceed the expectations of its stakeholders.</li>
                           </ul>
+
                         </div>
                       </div>
                     </div>
@@ -129,7 +125,7 @@ const changeTab = (tabName) => {
                         <br>
                         <h3 class="entry-title text-center"><strong>Quality Objectives</strong></h3>
                         <p class="entry-title text-center"><i>QP-01/r0/01Feb24</i></p>
-                        <div class="card-header items-center p-1 bg-gray-100"></div>
+                        <div class="card-header items-center "></div>
                   <br>
                   <ol>
                     <li>To deliver the required ICT products and services according to mutually agreed terms and conditions and existing applicable statutory and regulatory requirements;</li>
@@ -142,11 +138,11 @@ const changeTab = (tabName) => {
                   <br>
 
                   <div class="container mx-auto mt-4" style="max-width: 1500px;">
-                      <div class="card border rounded-lg shadow-lg">
+                      <div class="">
                         <br>
                         <h3 class="entry-title text-center"><strong>ADMINISTRATIVE AND FINANCE DIVISION (AFD) QUALITY OBJECTIVES</strong></h3>
                         <p class="entry-title text-center"><i>QO-02/r2/18Jun24</i></p>
-                        <div class="card-header items-center p-1 bg-gray-100"></div>
+                        <div class="card-header items-center "></div>
 
                   <ol>
                     <br>
@@ -167,7 +163,7 @@ const changeTab = (tabName) => {
               <!-- Contact Us Tab -->
               <div v-if="activeTab === 'contactus'" class="tab-pane fade show active">
                 <div class="container mx-auto mt-4" style="max-width: 1500px;">
-                      <div class="card border rounded-lg shadow-lg">
+                      <div class="">
                 <div class="card-body" style="padding-top: 100px;"> <!-- Adjust padding-top as needed -->
                   <img src="/images/DMT-Members.jpg" alt="Image"
                   style="display: block; width: 100%; height: auto;">
@@ -204,7 +200,7 @@ const changeTab = (tabName) => {
   margin-right: 50px;
   width: 3000px; /* Adjust width as needed */
   height: 310px; /* Adjust height as needed */
-  background-color: #ffffffb7; /* Light gray background */
+  background-color: #ffffff; /* Light gray background */
   border: 1px solid #f4f6f7; /* Gray border */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(14, 167, 214, 0.932); /* Drop shadow for depth */
@@ -214,6 +210,9 @@ const changeTab = (tabName) => {
     background-color: #ffffffb7;
     border-radius: 10px;
   box-shadow: 0 2px 4px rgba(14, 167, 214, 0.932);
+}
+.card-border{
+    background-color: white;
 }
 .image {
   width: 60%;
