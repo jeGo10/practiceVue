@@ -15,13 +15,13 @@ const changeTab = (tabName) => {
 <template>
     <div>
       <Head title="Dashboard" />
-  
+
       <AuthenticatedLayout>
-        
-  
+
+
         <div class="document-background">
-          <div class="container" style="background-color: white; padding: 0;">
-  
+          <div class=" card-body container" style="background-color: white; padding: 0;">
+
             <!-- Tabs for navigation -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
@@ -37,16 +37,16 @@ const changeTab = (tabName) => {
                 <button class="nav-link" :class="{ 'active': activeTab === 'contactus' }" @click="changeTab('contactus')">Contact Us</button>
               </li>
             </ul>
-            
-            
+
+
             <!-- Tab content -->
             <div class="tab-content" id="myTabContent">
               <!-- Vision & Mission Tab -->
               <div v-if="activeTab === 'visionmission'" class="tab-pane fade show active">
-                <div class="card-body">
+                <div class=" ">
                   <h1 class="entry-title text-center"><strong>Mission and Vision</strong></h1>
                   <br><br>
-                  
+
                   <div class="flex justify-center items-center gap-1">
                   <div class="image">
                     <img src="/images/mission.png" alt="">
@@ -70,7 +70,7 @@ const changeTab = (tabName) => {
                 <br>
                 <br>
                 <div class="flex mx-1 mt-8">
-                    <div class="flex-1 px-3 py-2 h-48 shadow-md bg-slate-40 shadow-cyan-500 rounded-lg">
+                    <div class="flex-1 px-3 mb-6 ml-10 py-2 h-48 shadow-md bg-slate-40 shadow-cyan-500 rounded-lg">
                         <div>
                             <p class="font-bold">Vision</p>
                             <p>An innovative, safe, and happy nation that thrives through and is enabled by Information and Communications Technology.</p>
@@ -79,13 +79,13 @@ const changeTab = (tabName) => {
                     </div>
                     <img src="/images/vision.png" alt="Image" class="h-56 -mt-5 mx-40 ml-44 object-cover">
                 </div>
-               
+
                 </div>
               </div>
-  
+
               <!-- Quality Policy Tab -->
               <div v-if="activeTab === 'qualitypolicy'" class="tab-pane fade show active">
-                  <div class="card-body">
+                  <div class="">
                     <div class="container mx-auto mt-4" style="max-width: 1500px;">
                       <div class="card border rounded-lg shadow-lg">
                         <br>
@@ -102,7 +102,7 @@ const changeTab = (tabName) => {
                         <!-- Commitments Section -->
                         <div class="p-4">
                           <p><strong>The Department of Information and Communications Technology RIX BASULTA commits to:</strong></p>
-                        
+
                           <ul class="list-disc pl-8">
                             <li>Lead in pushing the National ICT Development agenda in transitioning the Philippines toward a world-class digital economy.</li>
                             <br>
@@ -120,10 +120,10 @@ const changeTab = (tabName) => {
 
 
 
-  
+
               <!-- Quality Objectives Tab -->
               <div v-if="activeTab === 'qualityobjectives'" class="tab-pane fade show active">
-                <div class="card-body">
+                <div class="">
                   <div class="container mx-auto mt-4" style="max-width: 1500px;">
                       <div class="card border rounded-lg shadow-lg">
                         <br>
@@ -140,14 +140,14 @@ const changeTab = (tabName) => {
                   </div>
                   <br>
                   <br>
-              
+
                   <div class="container mx-auto mt-4" style="max-width: 1500px;">
                       <div class="card border rounded-lg shadow-lg">
                         <br>
                         <h3 class="entry-title text-center"><strong>ADMINISTRATIVE AND FINANCE DIVISION (AFD) QUALITY OBJECTIVES</strong></h3>
                         <p class="entry-title text-center"><i>QO-02/r2/18Jun24</i></p>
                         <div class="card-header items-center p-1 bg-gray-100"></div>
-                        
+
                   <ol>
                     <br>
                     <li>To ensure that all Human Resource Systems are in place in terms of Recruitment, Selection, and Placement; Learning and Development; Performance Management; and Rewards and Recognition with 100% compliance to the Civil Service Commission’s Program to Institutionalize Meritocracy and Excellence in Human Resource Management (PRIME-HRM);</li>
@@ -160,10 +160,10 @@ const changeTab = (tabName) => {
                   </ol>
                       </div>
                   </div>
-                
+
                 </div>
               </div>
-  
+
               <!-- Contact Us Tab -->
               <div v-if="activeTab === 'contactus'" class="tab-pane fade show active">
                 <div class="container mx-auto mt-4" style="max-width: 1500px;">
@@ -173,7 +173,7 @@ const changeTab = (tabName) => {
                   style="display: block; width: 100%; height: auto;">
                   <div class="card-header items-center p-1 bg-gray-100"></div>
                   <br>
-                 
+
                   <h3 class="entry-title text-center"><strong>Contact Us</strong></h3>
                   <p class="text-center">
                     <i class="fa fa-phone" aria-hidden="true" style="margin-right: 5px;"></i>(062) 991 2742<br>
@@ -187,10 +187,10 @@ const changeTab = (tabName) => {
               </div>
 
             </div>
-  
+
           </div>
         </div>
-  
+
       </AuthenticatedLayout>
     </div>
   </template>
@@ -200,7 +200,8 @@ const changeTab = (tabName) => {
 <style scoped>
 .standing-rectangle {
   padding: 15px;
-  margin-left: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
   width: 3000px; /* Adjust width as needed */
   height: 310px; /* Adjust height as needed */
   background-color: #ffffffb7; /* Light gray background */
@@ -208,7 +209,12 @@ const changeTab = (tabName) => {
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(14, 167, 214, 0.932); /* Drop shadow for depth */
 }
-
+.card-body{
+    border: 1px solid #f4f6f7;
+    background-color: #ffffffb7;
+    border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(14, 167, 214, 0.932);
+}
 .image {
   width: 60%;
   height: auto;
