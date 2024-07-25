@@ -34,16 +34,18 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
                      <ul class="nav nav-tabs flex">
                         <li class="nav-item">
                             <a
+                                class="text-dark"
                                 @click="currentTab = 'all'"
                                 :class="{
                                     'nav-link': true,
-                                    'active': currentTab === 'all'
+                                    'active': currentTab === 'all',
                                 }"
                                 href="#all"> All
                             </a>
                         </li>
                         <li class="nav-item">
                             <a
+                                class="text-dark"
                                 @click="currentTab = 'complete'"
                                 :class="{
                                     'nav-link': true,
@@ -54,6 +56,7 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
                         </li>
                         <li class="nav-item">
                             <a
+                                class="text-dark"
                                 @click="currentTab = 'incomplete'"
                                 :class="{
                                     'nav-link': true,
