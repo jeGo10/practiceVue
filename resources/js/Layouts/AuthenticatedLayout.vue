@@ -28,13 +28,15 @@ const showingNavigationDropdown = ref(false);
                         </div>
                         <!-- Navigation Links -->
                         <div class="space-y-1 w-full flex flex-col">
-                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="">
+                            <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                 <i class="fa fa-home text-lg"></i><span class="ml-2">Home</span>
                             </NavLink>
+
                             <SidebarDropdown />
-                            <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="pl-8 text-gray-300 hover:text-white hover:bg-slate-600">
-                        Tasks
-                    </NavLink>
+
+                            <NavLink :href="route('divisions.index')" :active="route().current('divisions.index')">
+                                <i class="fa fa-home text-lg"></i><span class="ml-2">Division</span>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
