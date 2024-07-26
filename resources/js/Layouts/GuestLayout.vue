@@ -13,7 +13,7 @@ import { Link } from '@inertiajs/vue3';
 
             <div class="typewriter poppins-thin"><h3><strong>Regional Office IX and BASULTA</strong></h3></div>
             <div class="typewriter poppins-regular"><h1>QUALITY MANAGEMENT SYSTEM <br>PORTAL</h1></div>
-            <div class="typewriter poppins-thin" ><h4><strong>v.01</strong></h4></div>
+            <div class="typewriter poppins-thin" ><h4><strong>v.02</strong></h4></div>
         </div>
 
         <div
