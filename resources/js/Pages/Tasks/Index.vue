@@ -24,7 +24,7 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
             <div class="card border rounded-lg shadow-lg">
                 <div class="card-header flex justify-between items-center p-4 bg-gray-100">
                     <h1 class="text-xl font-bold">Tasks</h1>
-                    <div>
+                    <div class="ml-auto">
                         <CreateTasks />
                     </div>
                 </div>

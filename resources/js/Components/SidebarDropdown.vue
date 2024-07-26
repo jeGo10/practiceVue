@@ -22,13 +22,13 @@ onMounted(() => {
 
 <template>
     <div>
-        <button @click="toggleDropdown" class="flex items-center w-full p-2 text-gray-300 hover:text-white hover:bg-slate-600 transition duration-75 rounded-lg group">
-            <i class="fa fa-gear"></i>
+        <button @click="toggleDropdown" class="flex items-center w-full p-2 text-gray-300 hover:text-white hover:bg-slate-600 transition duration-75 rounded-t-lg group" :class="{'bg-slate-900':isOpen,}">
+            <i class="fa fa-gear text-lg"></i>
             <span class="flex-1 ms-2 text-left rtl:text-right whitespace-nowrap">QMS</span>
             <i :class="{'rotate-90': isOpen}" class="fa fa-angle-left text-lg font-bold transition-transform duration-200"></i>
         </button>
         <transition name="slide-fade">
-            <ul v-show="isOpen" class="py-2 space-y-2">
+            <ul v-show="isOpen" class="p-2 space-y-2 bg-slate-900 rounded-b-lg">
                 <li>
                     <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="pl-8 text-gray-300 hover:text-white hover:bg-slate-600">
                         Chirps
@@ -47,7 +47,7 @@ onMounted(() => {
 <style scoped>
 /* Transition for slide-fade effect */
 .slide-fade-enter-active, .slide-fade-leave-active {
-    transition: all 0.5s ease;
+    transition: all 0.5s;
 }
 .slide-fade-enter-from, .slide-fade-leave-to {
     max-height: 0;
