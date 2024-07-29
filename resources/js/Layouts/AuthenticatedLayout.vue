@@ -14,7 +14,7 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div class="min-h-screen flex flex-col sm:flex-row">
         <!-- Sidebar -->
-        <aside class="bg-slate-800 h-screen w-full sm:w-64 flex-shrink-0">
+        <aside class="bg-slate-800 min-h-screen w-full sm:w-64 flex-shrink-0">
             <div class="h-screen flex flex-col justify-between">
                 <!-- Primary Navigation Menu -->
                 <div>
@@ -51,19 +51,19 @@ const showingNavigationDropdown = ref(false);
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Responsive Navigation Toggle -->
-            <div class="sm:hidden bg-slate-700">
+            <div class="sm:hidden bg-slate-800">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
-                                </Link>
+                                <Link :href="route('dashboard')" class="no-underline text-white flex items-center">
+                                <img src="/images/dict-logo.png" class="block h-10" alt="Logo" />
+                            </Link>
                             </div>
                         </div>
                         <!-- Hamburger -->
-                        <div class="-me-2 flex items-center">
+                        <div class=" flex items-center">
                             <button
                                 @click="showingNavigationDropdown = !showingNavigationDropdown"
                                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
@@ -91,7 +91,7 @@ const showingNavigationDropdown = ref(false);
             </div>
 
             <!-- Responsive Navigation Menu -->
-            <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden bg-white border-b border-gray-100">
+            <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden bg-slate-800 border-b border-gray-100">
                 <div class="pt-2 pb-3 space-y-1">
                     <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')"> Dashboard </ResponsiveNavLink>
                     <ResponsiveNavLink :href="route('chirps.index')" :active="route().current('chirps.index')"> Chirps </ResponsiveNavLink>
