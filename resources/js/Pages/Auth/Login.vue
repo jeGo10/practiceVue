@@ -60,7 +60,7 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
 
-                <PasswordInput
+                <TextInput
                     id="password"
                     type="password"
                     class="mt-1 block w-full"
