@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Division;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -12,10 +13,12 @@ class DivisionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //
-        return Inertia::render("Divisions/Index");
+        $divisions = Division::all();
+        return Inertia::render("Divisions/Index",[
+            'divisions' => $divisions,
+        ]);
     }
 
     /**
@@ -29,9 +32,22 @@ class DivisionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
-        //
+    // Validate the incoming request data
+    $validated = $request->validate([
+        'name' => 'required|string',
+        'status' => 'required|string',
+    ]);
+
+    // Create a new Division record using the validated data
+    Division::create([
+        'name' => $validated['name'],
+        'status' => $validated['status'],
+    ]);
+
+    // Redirect to the index route with a success message
+    return redirect(route('divisions.index'));
     }
 
     /**
@@ -55,7 +71,17 @@ class DivisionController extends Controller
      */
     public function update(Request $request, Division $division)
     {
-        //
+        // Validate the request data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'status' => 'boolean|nullable',
+        ]);
+
+        // Update the task with the validated data
+        $division->update($validated);
+
+        // Optionally add a flash message for feedback
+        return redirect(route('divisions.index'));
     }
 
     /**
@@ -63,6 +89,7 @@ class DivisionController extends Controller
      */
     public function destroy(Division $division)
     {
-        //
+        $division->delete();
+        return redirect(route('divisions.index'));
     }
 }

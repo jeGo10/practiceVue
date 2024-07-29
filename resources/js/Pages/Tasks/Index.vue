@@ -31,46 +31,28 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
                 <div class="card-body p-4">
                     <!-- All Tasks Tab -->
                      <!-- Tab Navigation -->
-                     <ul class="nav nav-tabs flex">
+                     <ul class="nav nav-tabs flex bg-gray-300 rounded-t-lg">
                         <li class="nav-item">
-                            <a
-                                class="text-dark"
-                                @click="currentTab = 'all'"
-                                :class="{
-                                    'nav-link': true,
-                                    'active': currentTab === 'all',
-                                }"
-                                href="#all"> All
+                            <a class="text-dark" @click="currentTab = 'all'" :class="{ 'nav-link': true, 'active': currentTab === 'all', }" href="#all">
+                                All
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a
-                                class="text-dark"
-                                @click="currentTab = 'complete'"
-                                :class="{
-                                    'nav-link': true,
-                                    'active': currentTab === 'complete'
-                                }"
-                                href="#complete"> Complete
+                            <a class="text-dark" @click="currentTab = 'complete'" :class="{'nav-link': true, 'active': currentTab === 'complete' }" href="#complete">
+                                Complete
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a
-                                class="text-dark"
-                                @click="currentTab = 'incomplete'"
-                                :class="{
-                                    'nav-link': true,
-                                    'active': currentTab === 'incomplete'
-                                }"
-                                href="#incomplete"> Incomplete
+                            <a class="text-dark" @click="currentTab = 'incomplete'" :class="{ 'nav-link': true, 'active': currentTab === 'incomplete' }" href="#incomplete">
+                                Incomplete
                             </a>
                         </li>
                     </ul>
 
                     <div v-if="currentTab === 'all'">
-                        <table class="table-auto w-full border border-gray-200">
+                        <table class="table-auto w-full border-b border-x border-gray-200">
                             <thead>
-                                <tr class="bg-gray-200">
+                                <tr class="border-b">
                                     <th class="p-2">Date</th>
                                     <th class="p-2">Title</th>
                                     <th class="p-2">Description</th>
@@ -99,9 +81,9 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
                     </div>
                     <!-- Complete Tasks Tab -->
                     <div v-if="currentTab === 'complete'">
-                        <table class="table-auto w-full border border-gray-200">
+                        <table class="table-auto w-full border-b border-x border-gray-200">
                             <thead>
-                                <tr class="bg-gray-200">
+                                <tr class="border-b">
                                     <th class="p-2">Date</th>
                                     <th class="p-2">Title</th>
                                     <th class="p-2">Description</th>
@@ -129,9 +111,9 @@ const incompleteTasks = computed(() => props.tasks.filter(task => task.progress 
                     </div>
                     <!-- Incomplete Tasks Tab -->
                     <div v-if="currentTab === 'incomplete'">
-                        <table class="table-auto w-full border border-gray-200">
+                        <table class="table-auto w-full border-b border-x border-gray-200">
                             <thead>
-                                <tr class="bg-gray-200">
+                                <tr class="border-b">
                                     <th class="p-2">Date</th>
                                     <th class="p-2">Title</th>
                                     <th class="p-2">Description</th>

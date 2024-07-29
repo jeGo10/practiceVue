@@ -37,6 +37,7 @@ const showingNavigationDropdown = ref(false);
                             <NavLink :href="route('divisions.index')" :active="route().current('divisions.index')">
                                 <i class="fa fa-file-o text-lg"></i><span class="ml-2">Division</span>
                             </NavLink>
+
                             <NavLink :href="route('UserManagement.index')" :active="route().current('UserManagement.index')">
                                 <i class="fa fa-users text-lg"></i><span class="ml-2">User Management</span>
                             </NavLink>
