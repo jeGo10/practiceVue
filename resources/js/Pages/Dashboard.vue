@@ -93,11 +93,11 @@ const changeTab = (tabName) => {
 
             <!-- Quality Policy Tab -->
             <div v-if="activeTab === 'qualitypolicy'" class="tab-pane fade show">
-              <div class="card-border">
-                <div class="carditems-center p-1">
+              <div class="">
+                <div class=" m-3 p-2 border-2 border-[#f4f6f7] rounded-md">
                   <h1 class="entry-title text-center pb-1 pt-10"><strong>Quality Policy</strong></h1>
                   <p class="text-center"><i>QPL/r0/01Feb24</i></p>
-                  <div class="core-values rounded-lg shadow-md p-4">
+                  <div class="">
                     <p><strong>The Department of Information and Communications Technology RIX BASULTA commits to:</strong></p>
                     <ul>
                       <li>Lead in pushing the National ICT Development agenda in transitioning the Philippines toward a world-class digital economy.</li>
