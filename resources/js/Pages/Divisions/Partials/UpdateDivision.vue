@@ -1,5 +1,5 @@
 <script setup>
-import Modal from '@/Components/Modal.vue';
+import SmallerModal from '@/Components/SmallerModal.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -42,7 +42,7 @@ const editDivision = () => {
     <PrimaryButton @click="updateDivision" class="bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-900"><i class="fa fa-edit text-white-500 text-sm"></i></PrimaryButton>
 
     <section>
-        <Modal :show="editingDivision" @close="closeModal">
+        <SmallerModal :show="editingDivision" @close="closeModal">
             <!-- Head -->
             <div class="flex items-center justify-between p-4 border-b rounded-t">
                 <h3 class="text-xl">
@@ -88,6 +88,6 @@ const editDivision = () => {
                     </div>
                 </form>
             </div>
-        </Modal>
+        </SmallerModal>
     </section>
 </template>
