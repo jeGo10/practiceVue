@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -14,10 +16,16 @@ class TaskController extends Controller
      */
     public function index(): Response
     {
+        // Eager load the 'roles' relationship using a query builder
+        $user = User::with('roles')->find(Auth::id());
+
         $user_id = auth()->user()->id;
         $tasks = Task::where("user_id", $user_id)->with("user:id,name")->get();
         return Inertia::render('Tasks/Index',[
             'tasks' => $tasks,
+            'auth' => [
+                'user' => $user
+            ]
         ]);
     }
 

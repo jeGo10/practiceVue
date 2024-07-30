@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,9 +17,15 @@ class DivisionController extends Controller
      */
     public function index(): Response
     {
+        // Eager load the 'roles' relationship using a query builder
+        $user = User::with('roles')->find(Auth::id());
+
         $divisions = Division::all();
         return Inertia::render("Divisions/Index",[
             'divisions' => $divisions,
+            'auth' => [
+                'user' => $user
+            ]
         ]);
     }
 

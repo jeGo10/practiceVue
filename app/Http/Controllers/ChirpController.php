@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -16,9 +18,18 @@ class ChirpController extends Controller
      */
     public function index(): Response
     {
+        // Eager load the 'roles' relationship using a query builder
+        $user = User::with('roles')->find(Auth::id());
+
+        // Retrieve chirps with their associated user data
+        $chirps = Chirp::with('user:id,name')->latest()->get();
+
+        // Return Inertia response with both 'chirps' and 'user' data
         return Inertia::render('Chirps/Index', [
-            //
-            'chirps' => Chirp::with('user:id,name')->latest()->get(),
+            'chirps' => $chirps,
+            'auth' => [
+                'user' => $user
+            ]
         ]);
     }
 

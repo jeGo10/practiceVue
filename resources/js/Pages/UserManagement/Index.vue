@@ -25,6 +25,7 @@ const props = defineProps(['users']);
                                 <th class="p-2">User Name</th>
                                 <th class="p-2">Email</th>
                                 <th class="p-2">Status</th>
+                                <th class="p-2">Role</th>
                                 <th class="p-2">Action</th>
                             </tr>
                         </thead>
@@ -34,6 +35,10 @@ const props = defineProps(['users']);
                                 <td class="p-2">{{ user.email }}</td>
                                 <td class="p-2">
                                     <!-- User Status -->
+                                </td>
+                                <td class="p-2">
+                                    <!-- Role -->
+                                     {{ user.role }}
                                 </td>
                                 <td class="p-2">
                                     <div class="flex space-x-2">
