@@ -6,7 +6,10 @@ import UpdateDivision from './Partials/UpdateDivision.vue';
 import DeleteDivision from './Partials/DeleteDivision.vue';
 import { Head } from '@inertiajs/vue3';
 
-const props = defineProps(['divisions']);
+const props = defineProps({
+    divisions: { type: Array, default: () => [] },
+    auth: { type: Object, default: () => ({ user: { role: '' } }) }
+});
 
 // Reactive variable to track the current tab
 const currentTab = ref('all');
@@ -15,6 +18,8 @@ const currentTab = ref('all');
 const activeDivision = computed(() => props.divisions.filter(division => division.status === 1));
 const inactiveDivision = computed(() => props.divisions.filter(division => division.status !== 1));
 
+
+const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name === 'admin'));
 </script>
 
 <template>
@@ -24,7 +29,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
             <div class="card max-w-7xl mx-auto border rounded-lg shadow-lg">
                 <div class="card-header flex justify-between items-center p-4 bg-gray-100">
                     <h1 class="text-xl font-bold">Division</h1>
-                    <div class="ml-auto">
+                    <div v-if="isAdmin" class="ml-auto">
                         <CreateDivision />
                     </div>
                 </div>
@@ -57,7 +62,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                                             <th class="p-2">Division</th>
                                             <th class="p-2">Status</th>
                                             <th class="p-2">Date Created</th>
-                                            <th class="p-2">Actions</th>
+                                            <th v-if="isAdmin" class="p-2">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,7 +74,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                                             </td>
                                             <td class="p-2">{{ new Date(divisions.created_at).toLocaleDateString('en-US') }}</td>
                                             <td class="p-2">
-                                                <div class="flex space-x-2 justify-center">
+                                                <div v-if="isAdmin" class="flex space-x-2 justify-center">
                                                     <!-- Edit and Delete -->
                                                      <UpdateDivision :divisions="divisions"/>
                                                      <DeleteDivision :divisions="divisions"/>
@@ -88,7 +93,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                                             <th class="p-2">Division</th>
                                             <th class="p-2">Status</th>
                                             <th class="p-2">Date Created</th>
-                                            <th class="p-2">Actions</th>
+                                            <th v-if="isAdmin" class="p-2">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -99,7 +104,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                                             </td>
                                             <td class="p-2">{{ new Date(divisions.created_at).toLocaleDateString('en-US') }}</td>
                                             <td class="p-2">
-                                                <div class="flex space-x-2 justify-center">
+                                                <div v-if="isAdmin" class="flex space-x-2 justify-center">
                                                     <!-- Edit and Delete -->
                                                     <UpdateDivision :divisions="divisions"/>
                                                     <DeleteDivision :divisions="divisions"/>
@@ -118,7 +123,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                                             <th class="p-2">Division</th>
                                             <th class="p-2">Status</th>
                                             <th class="p-2">Date Created</th>
-                                            <th class="p-2">Actions</th>
+                                            <th v-if="isAdmin" class="p-2">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,7 +134,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                                             </td>
                                             <td class="p-2">{{ new Date(divisions.created_at).toLocaleDateString('en-US') }}</td>
                                             <td class="p-2">
-                                                <div class="flex space-x-2 justify-center">
+                                                <div v-if="isAdmin" class="flex space-x-2 justify-center">
                                                     <!-- Edit and Delete -->
                                                     <UpdateDivision :divisions="divisions"/>
                                                     <DeleteDivision :divisions="divisions"/>
