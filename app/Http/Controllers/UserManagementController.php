@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -14,9 +15,14 @@ class UserManagementController extends Controller
      */
     public function index(): Response
     {
+        // Eager load the 'roles' relationship using a query builder
+        $userRole = User::with('roles')->find(Auth::id());
         $user = User::all();
         return Inertia::render('UserManagement/Index',[
             'users' => $user,
+            'auth' => [
+                'user' => $userRole
+            ]
         ]);
     }
 

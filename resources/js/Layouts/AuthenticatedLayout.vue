@@ -1,14 +1,21 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import { ref, computed } from 'vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import SidebarDropdown from '@/Components/SidebarDropdown.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+const { props } = usePage();
+const user = props.auth.user;
+
+// Compute role-related logic
+const isAdmin = computed(() => {
+  return user?.roles?.some(role => role.name === 'admin');
+});
+
 </script>
 
 <template>
@@ -38,7 +45,7 @@ const showingNavigationDropdown = ref(false);
                                 <i class="fa fa-file-o text-lg"></i><span class="ml-2">Division</span>
                             </NavLink>
 
-                            <NavLink :href="route('UserManagement.index')" :active="route().current('UserManagement.index')">
+                            <NavLink v-if="isAdmin" :href="route('UserManagement.index')" :active="route().current('UserManagement.index')">
                                 <i class="fa fa-users text-lg"></i><span class="ml-2">User Management</span>
                             </NavLink>
                         </div>
