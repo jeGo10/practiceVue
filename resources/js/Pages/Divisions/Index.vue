@@ -21,7 +21,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
     <Head title="Division"/>
     <AuthenticatedLayout>
         <div class="container mx-auto mt-4">
-            <div class="card max-w-4xl mx-auto border rounded-lg shadow-lg">
+            <div class="card max-w-7xl mx-auto border rounded-lg shadow-lg">
                 <div class="card-header flex justify-between items-center p-4 bg-gray-100">
                     <h1 class="text-xl font-bold">Division</h1>
                     <div class="ml-auto">
@@ -50,7 +50,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                             </li>
                         </ul>
                         <div v-if="currentTab === 'all'">
-                            <div class="w-full max-w-screen-lg">
+                            <div class="w-full">
                                 <table class="table-auto w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
@@ -81,7 +81,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                             </div>
                         </div>
                         <div v-if="currentTab === 'active'">
-                            <div class="w-full max-w-screen-lg">
+                            <div class="w-full">
                                 <table class="table-auto w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
@@ -111,7 +111,7 @@ const inactiveDivision = computed(() => props.divisions.filter(division => divis
                             </div>
                         </div>
                         <div v-if="currentTab === 'incomplete'">
-                            <div class="w-full max-w-screen-lg">
+                            <div class="w-full">
                                 <table class="table-auto w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">

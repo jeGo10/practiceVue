@@ -1,5 +1,5 @@
 <script setup>
-import Modal from '@/Components/Modal.vue';
+import SmallerModal from '@/Components/SmallerModal.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
@@ -33,7 +33,7 @@ const destroyDivision = () => {
     <DangerButton @click="deleteDivision"><i class="fa fa-trash-o text-sm"></i></DangerButton>
 
     <section>
-        <Modal :show="deletingDivision" @close="closeModal">
+        <SmallerModal :show="deletingDivision" @close="closeModal">
             <!-- Head -->
             <div class="flex items-center justify-between p-4 border-b rounded-t">
                 <h3 class="text-xl">
@@ -58,7 +58,7 @@ const destroyDivision = () => {
                     <DangerButton>Delete</DangerButton>
                 </form>
             </div>
-        </Modal>
+        </SmallerModal>
     </section>
 
 </template>

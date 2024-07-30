@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
-import Modal from '@/Components/Modal.vue';
+import SmallerModal from '@/Components/SmallerModal.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 
@@ -37,13 +37,14 @@ const addDivision = () => {
 const submit = () => {
     addDivision();
 };
+
 </script>
 
 <template>
     <PrimaryButton @click="createDivision">Add Division</PrimaryButton>
 
     <section>
-        <Modal :show="creatingDivision" @close="closeModal">
+        <SmallerModal :show="creatingDivision" @close="closeModal">
             <!-- Modal Head -->
             <div class="flex items-center justify-between p-4 border-b rounded-t">
                 <h3 class="text-xl">Add a new Division</h3>
@@ -93,6 +94,6 @@ const submit = () => {
                     </div>
                 </form>
             </div>
-        </Modal>
+        </SmallerModal>
     </section>
 </template>
