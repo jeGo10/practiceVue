@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Form;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,9 @@ class FormController extends Controller
     {
         // Eager load the 'roles' relationship using a query builder
         $user = User::with('roles')->find(Auth::id());
-
-        return Inertia::render('Forms/Index',[
+        $forms = Form::all();
+        return Inertia::render('Forms/Index', [
+            'forms' => $forms,
             'auth' => [
                 'user' => $user
             ]
@@ -38,15 +40,37 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'doc_ref_code' => 'required|string|max:255',
+            'doc_title' => 'required|string|max:255',
+            'division' => 'required|string|max:255',
+            'process_owner' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
+            'doc_type' => 'required|string|max:255',
+            'request_type' => 'required|string|max:255',
+            'request_reason' => 'required|string|max:255',
+            'requester' => 'required|string|max:255',
+            'request_date' => 'required|date',
+            'revision_num' => 'required|string|max:255',
+            'effectivity_date' => 'required|date',
+            'file' => 'required|file|mimes:pdf,doc,docx'
+        ]);
+
+        $form = new Form($validatedData);
+        $form->user_id = Auth::id();
+        $form->save();
+
+        return redirect()->route('forms.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Form $form): Response
     {
-        //
+        return Inertia::render('Forms/Show', [
+            'form' => $form
+        ]);
     }
 
     /**
@@ -60,15 +84,36 @@ class FormController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ){
-    //
+    public function update(Request $request, Form $form)
+    {
+        $validatedData = $request->validate([
+            'doc_ref_code' => 'required|string|max:255',
+            'doc_title' => 'required|string|max:255',
+            'division' => 'required|string|max:255',
+            'process_owner' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
+            'doc_type' => 'required|string|max:255',
+            'request_type' => 'required|string|max:255',
+            'request_reason' => 'required|string|max:255',
+            'requester' => 'required|string|max:255',
+            'request_date' => 'required|date',
+            'revision_num' => 'required|string|max:255',
+            'effectivity_date' => 'required|date',
+            'file' => 'nullable|file|mimes:pdf,doc,docx'
+        ]);
+
+        $form->update($validatedData);
+
+        return redirect()->route('forms.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy(Form $form)
     {
-        //
+        $form->delete();
+
+        return redirect()->route('forms.index');
     }
 }

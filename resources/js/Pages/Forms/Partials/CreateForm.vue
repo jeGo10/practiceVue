@@ -6,6 +6,7 @@ import Modal from '@/Components/Modal.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+
 // State for managing modal visibility
 const creatingDocument = ref(false);
 
@@ -39,8 +40,12 @@ const closeModal = () => {
 
 // Function to submit the form
 const submit = () => {
-    form.post(route('documents.store'), {
-        onSuccess: () => closeModal(),
+    form.post(route('forms.store'), {
+
+            // Emit the document details to the parent component
+            onSuccess: () => closeModal(),
+
+
     });
 };
 </script>
@@ -57,7 +62,7 @@ const submit = () => {
                 <h3 class="text-xl">Create New Document</h3>
                 <button
                     type="button"
-                    class="text-gray-900 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-900 rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto"
                     @click="closeModal"
                 >
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -97,7 +102,7 @@ const submit = () => {
                                 <select
                                     id="division"
                                     v-model="form.division"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
                                     <option value="N/A">N/A</option>
@@ -131,7 +136,7 @@ const submit = () => {
                                 <select
                                     id="doc_type"
                                     v-model="form.doc_type"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
                                     <option value="Quality Manual">Quality Manual</option>
@@ -213,13 +218,13 @@ const submit = () => {
                                 <input
                                     id="file"
                                     type="file"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     @change="e => form.file = e.target.files[0]"
                                     required
                                 />
                             </div>
                         </div>
-                        <div class="flex justify-center items-center mt-4">
+                        <div class="flex items-center justify-center mt-4">
                             <PrimaryButton :disabled="form.processing">
                                 Save Document
                             </PrimaryButton>
