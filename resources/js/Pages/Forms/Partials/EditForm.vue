@@ -74,7 +74,7 @@ const editForm = () => {
 
                 <!-- Body -->
                 <div class="flex items-center justify-center m-10">
-                    <form @submit.prevent="editForm" class="grid grid-cols-1 gap-7 sm:grid-cols-4">
+                    <form @submit.prevent="editForm" class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                         <div>
                             <InputLabel for="doc_ref_code" value="Document Reference Code"/>
                             <TextInput
