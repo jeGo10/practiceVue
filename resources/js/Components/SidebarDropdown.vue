@@ -39,6 +39,16 @@ onMounted(() => {
                         Tasks
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink :href="route('forms.index')" :active="route().current('forms.index')">
+                        <i class="fa fa-file-pdf-o text-lg"></i><span class="ml-2">Forms</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink>
+                        <i class="fa fa-archive text-lg"></i><span class="ml-2">Archive</span>
+                    </NavLink>
+                </li>
             </ul>
         </transition>
     </div>

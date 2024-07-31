@@ -4,6 +4,7 @@ use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('chirps', ChirpController::class);
     Route::resource('tasks', TaskController::class);
     Route::resource('divisions', DivisionController::class);
+    Route::resource('forms', FormController::class);
+
+    // This route should only be access Admin
     Route::resource('UserManagement', UserManagementController::class);
+
 });
 
 
