@@ -45,7 +45,7 @@ onMounted(() => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink>
+                    <NavLink :href="route('archives.index')" :active="route().current('archives.index')"> 
                         <i class="fa fa-archive text-lg"></i><span class="ml-2">Archive</span>
                     </NavLink>
                 </li>
