@@ -75,7 +75,7 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox name="show_password" v-model:checked="showPassword" />
-                    <span class="ms-2 text-sm text-gray-600">Show Password</span>
+                    <span class="ms-1 text-sm text-gray-700 text">Show Password</span>
                 </label>
             </div>
 

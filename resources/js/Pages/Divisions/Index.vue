@@ -56,7 +56,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                         </ul>
                         <div v-if="currentTab === 'all'">
                             <div class="w-full">
-                                <table class="table-auto w-full border-b border-x border-gray-200 border-collapse text-center">
+                                <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
                                             <th class="p-2">Division</th>
@@ -87,7 +87,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                         </div>
                         <div v-if="currentTab === 'active'">
                             <div class="w-full">
-                                <table class="table-auto w-full border-b border-x border-gray-200 border-collapse text-center">
+                                <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
                                             <th class="p-2">Division</th>
@@ -117,7 +117,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                         </div>
                         <div v-if="currentTab === 'incomplete'">
                             <div class="w-full">
-                                <table class="table-auto w-full border-b border-x border-gray-200 border-collapse text-center">
+                                <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
                                             <th class="p-2">Division</th>
