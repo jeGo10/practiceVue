@@ -30,15 +30,15 @@ const props = defineProps(['users']);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="user in props.users" :key="user.id" class="hover:bg-gray-50">
+                            <tr v-for="user in users" :key="user.id" class="hover:bg-gray-50">
                                 <td class="p-2">{{ user.name }}</td>
                                 <td class="p-2">{{ user.email }}</td>
                                 <td class="p-2">
                                     <!-- User Status -->
                                 </td>
-                                <td class="p-2">
+                                <td class="p-2 text-uppercase">
                                     <!-- Role -->
-                                     {{ user.role }}
+                                    {{ user.roles ? user.roles.map(role => role.name).join(', ') : 'No Role' }}
                                 </td>
                                 <td class="p-2">
                                     <div class="flex space-x-2">

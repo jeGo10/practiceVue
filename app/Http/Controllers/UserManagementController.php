@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Spatie\Permission\Models\Role;
 
 class UserManagementController extends Controller
 {
@@ -17,7 +21,7 @@ class UserManagementController extends Controller
     {
         // Eager load the 'roles' relationship using a query builder
         $userRole = User::with('roles')->find(Auth::id());
-        $user = User::all();
+        $user = User::with('roles')->get();
         return Inertia::render('UserManagement/Index',[
             'users' => $user,
             'auth' => [
@@ -40,6 +44,26 @@ class UserManagementController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+         event(new Registered($user));
+
+         // Assign the 'user' role to the newly created user
+        $role = Role::where('name', 'user')->first();
+        if ($role) {
+            $user->assignRole($role);
+        }
+        return redirect(route('UserManagement.index'));
     }
 
     /**

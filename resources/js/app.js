@@ -10,7 +10,15 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
+import Toast from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+const toastOptions = {
+    // Define your default options here
+};
+
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -19,6 +27,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(Toast, toastOptions)
             .mount(el);
     },
     progress: {
