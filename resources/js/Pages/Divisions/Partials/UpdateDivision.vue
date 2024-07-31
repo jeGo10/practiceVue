@@ -5,9 +5,11 @@ import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref, watch } from 'vue';
+import { useToast } from 'vue-toastification';
 
 const editingDivision = ref(false);
 const props = defineProps(['divisions']);
+const toast = useToast();
 
 const form = useForm({
     name: props.divisions.name || '',
@@ -32,7 +34,13 @@ const closeModal = () => {
 
 const editDivision = () => {
     form.put(route('divisions.update', props.divisions.id), {
-        onSuccess: () => closeModal(),
+        onSuccess: () => {
+            closeModal(),
+            toast.success('Division updated Successfully')
+        },
+        onError: () => {
+            toast.warning('Failed to update Division')
+        }
     });
 }
 

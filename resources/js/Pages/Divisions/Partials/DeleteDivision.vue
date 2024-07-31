@@ -3,9 +3,11 @@ import SmallerModal from '@/Components/SmallerModal.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
 
 const deletingDivision = ref(false);
 const props = defineProps(['divisions']);
+const toast = useToast();
 
 const form =useForm({
     name: props.divisions.name || '',
@@ -22,7 +24,13 @@ const closeModal = () => {
 
 const destroyDivision = () => {
     form.delete(route('divisions.destroy',props.divisions.id),{
-        onSuccess: () => closeModal(),
+        onSuccess: () => {
+            closeModal(),
+            toast.success('Division deleted Successfully')
+        },
+        onError: () => {
+            toast.warning('Failed to delete Division')
+        }
     });
 };
 

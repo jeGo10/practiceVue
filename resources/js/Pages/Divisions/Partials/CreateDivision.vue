@@ -5,9 +5,11 @@ import { useForm } from '@inertiajs/vue3';
 import SmallerModal from '@/Components/SmallerModal.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { useToast } from 'vue-toastification';
 
 // State for managing modal visibility
 const creatingDivision = ref(false);
+const toast = useToast();
 
 // Initialize form with useForm
 const form = useForm({
@@ -29,7 +31,13 @@ const closeModal = () => {
 // Function to submit the form
 const addDivision = () => {
     form.post(route('divisions.store'), {
-        onSuccess: () => closeModal(),
+        onSuccess: () => {
+            closeModal(),
+            toast.success('Division added Successfully')
+        },
+        onError: () => {
+            toast.warning('Failed to add Division')
+        }
     });
 };
 
