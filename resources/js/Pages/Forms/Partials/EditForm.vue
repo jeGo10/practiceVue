@@ -52,30 +52,29 @@ const editForm = () => {
 </script>
 
 <template>
-<div>
-    <PrimaryButton @click="updateForm" class="bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-900">
-        <i class="text-sm fa fa-edit text-white-500"></i>
-    </PrimaryButton>
+    <div>
+        <PrimaryButton @click="updateForm" class="bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-900">
+            <i class="text-sm fa fa-edit text-white-500"></i>
+        </PrimaryButton>
 
-    <section>
-        <Modal :show="editingForm" @close="closeModal">
-            <!-- Head -->
-            <div class="flex items-center justify-between p-4 border-b rounded-t">
-                <h3 class="text-xl">
-                    Edit Form
-                </h3>
-                <button type="button" class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-900 rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto" @click="closeModal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
+        <section>
+            <Modal :show="editingForm" @close="closeModal">
+                <!-- Head -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-xl">
+                        Edit Form {{ form.doc_title }}
+                    </h3>
+                    <button type="button" class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-900 rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto" @click="closeModal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
 
-            <!-- Body -->
-            <div class="flex items-center justify-center m-10">
-                <form @submit.prevent="editForm">
-                    <div class="space-y-4">
+                <!-- Body -->
+                <div class="flex items-center justify-center m-10">
+                    <form @submit.prevent="editForm" class="grid grid-cols-1 gap-7 sm:grid-cols-4">
                         <div>
                             <InputLabel for="doc_ref_code" value="Document Reference Code"/>
                             <TextInput
@@ -146,15 +145,14 @@ const editForm = () => {
                                 required
                             />
                         </div>
-                        <div class="flex items-center justify-center">
+                        <div class="flex items-center justify-center sm:col-span-3">
                             <PrimaryButton :disabled="form.processing" type="submit">
                                 Update Form
                             </PrimaryButton>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </Modal>
-    </section>
-</div>
-</template>
+                    </form>
+                </div>
+            </Modal>
+        </section>
+    </div>
+    </template>
