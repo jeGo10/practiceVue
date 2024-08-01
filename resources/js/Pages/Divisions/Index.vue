@@ -26,18 +26,18 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
     <Head title="Division"/>
     <AuthenticatedLayout>
         <div class="container mx-auto mt-4">
-            <div class="card max-w-7xl mx-auto border rounded-lg shadow-lg">
-                <div class="card-header flex justify-between items-center p-4 bg-gray-100">
+            <div class="mx-auto border rounded-lg shadow-lg card max-w-7xl">
+                <div class="flex items-center justify-between p-4 bg-gray-100 card-header">
                     <h1 class="text-xl font-bold">Division</h1>
                     <div v-if="isAdmin" class="ml-auto">
                         <CreateDivision />
                     </div>
                 </div>
-                <div class="card-body p-4">
+                <div class="p-4 card-body">
                     <!-- All Tasks Tab -->
                      <!-- Tab Navigation -->
                     <div class="flex flex-col">
-                        <ul class="nav nav-tabs flex bg-gray-300 rounded-t-lg">
+                        <ul class="flex bg-gray-300 rounded-t-lg nav nav-tabs">
                             <li class="nav-item">
                                 <a class="text-dark" @click="currentTab = 'all'" :class="{'nav-link': true,'active': currentTab === 'all', }" href="#all">
                                     All
@@ -69,12 +69,12 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         <tr v-for="divisions in props.divisions" :key="divisions.id">
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
-                                            <span v-if="divisions.status ==1" class="bg-green-500 text-white py-1 px-2 rounded">Active</span>
-                                            <span v-else class="bg-red-500 text-white py-1 px-2 rounded">Inactive</span>
+                                            <span v-if="divisions.status ==1" class="px-2 py-1 text-white bg-green-500 rounded">Active</span>
+                                            <span v-else class="px-2 py-1 text-white bg-red-500 rounded">Inactive</span>
                                             </td>
                                             <td class="p-2">{{ new Date(divisions.created_at).toLocaleDateString('en-US') }}</td>
                                             <td class="p-2">
-                                                <div v-if="isAdmin" class="flex space-x-2 justify-center">
+                                                <div v-if="isAdmin" class="flex justify-center space-x-2">
                                                     <!-- Edit and Delete -->
                                                      <UpdateDivision :divisions="divisions"/>
                                                      <DeleteDivision :divisions="divisions"/>
@@ -100,11 +100,11 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         <tr v-for="divisions in activeDivision" :key="divisions.id">
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
-                                            <span class="bg-green-500 text-white py-1 px-2 rounded">Active</span>
+                                            <span class="px-2 py-1 text-white bg-green-500 rounded">Active</span>
                                             </td>
                                             <td class="p-2">{{ new Date(divisions.created_at).toLocaleDateString('en-US') }}</td>
                                             <td class="p-2">
-                                                <div v-if="isAdmin" class="flex space-x-2 justify-center">
+                                                <div v-if="isAdmin" class="flex justify-center space-x-2">
                                                     <!-- Edit and Delete -->
                                                     <UpdateDivision :divisions="divisions"/>
                                                     <DeleteDivision :divisions="divisions"/>
@@ -130,11 +130,11 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         <tr v-for="divisions in inactiveDivision" :key="divisions.id">
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
-                                            <span class="bg-red-500 text-white py-1 px-2 rounded">Inactive</span>
+                                            <span class="px-2 py-1 text-white bg-red-500 rounded">Inactive</span>
                                             </td>
                                             <td class="p-2">{{ new Date(divisions.created_at).toLocaleDateString('en-US') }}</td>
                                             <td class="p-2">
-                                                <div v-if="isAdmin" class="flex space-x-2 justify-center">
+                                                <div v-if="isAdmin" class="flex justify-center space-x-2">
                                                     <!-- Edit and Delete -->
                                                     <UpdateDivision :divisions="divisions"/>
                                                     <DeleteDivision :divisions="divisions"/>

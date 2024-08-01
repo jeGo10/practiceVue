@@ -5,10 +5,12 @@ import { useForm } from '@inertiajs/vue3';
 import Modal from '@/Components/Modal.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
+import { useToast } from 'vue-toastification';
 
 
 // State for managing modal visibility
 const creatingDocument = ref(false);
+const toast = useToast();
 
 // Initialize form with useForm
 const form = useForm({
@@ -41,11 +43,13 @@ const closeModal = () => {
 // Function to submit the form
 const submit = () => {
     form.post(route('forms.store'), {
-
-            // Emit the document details to the parent component
-            onSuccess: () => closeModal(),
-
-
+        onSuccess: () => {
+            closeModal(),
+            toast.success('Form addedd Successfully')
+        },
+        onError: () => {
+            toast.warning('Failed to add Form')
+        }
     });
 };
 </script>
