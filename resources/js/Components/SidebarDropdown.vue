@@ -30,22 +30,12 @@ onMounted(() => {
         <transition name="slide-fade">
             <ul v-show="isOpen" class="p-2 space-y-2 bg-slate-900 rounded-b-lg">
                 <li>
-                    <NavLink :href="route('chirps.index')" :active="route().current('chirps.index')" class="pl-8 text-gray-300 hover:text-white hover:bg-slate-600">
-                        Chirps
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink :href="route('tasks.index')" :active="route().current('tasks.index')" class="pl-8 text-gray-300 hover:text-white hover:bg-slate-600">
-                        Tasks
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink :href="route('forms.index')" :active="route().current('forms.index')">
                         <i class="fa fa-file-pdf-o text-lg"></i><span class="ml-2">Forms</span>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink :href="route('archives.index')" :active="route().current('archives.index')"> 
+                    <NavLink :href="route('archives.index')" :active="route().current('archives.index')">
                         <i class="fa fa-archive text-lg"></i><span class="ml-2">Archive</span>
                     </NavLink>
                 </li>
