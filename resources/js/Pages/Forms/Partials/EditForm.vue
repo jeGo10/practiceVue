@@ -5,9 +5,11 @@ import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
+import { useToast } from 'vue-toastification';
 
 const props = defineProps(['form']);
 const editingForm = ref(false);
+const toast = useToast();
 
 const form = useForm({
   doc_ref_code: props.form.doc_ref_code || '',
@@ -46,7 +48,13 @@ const closeModal = () => {
 
 const editForm = () => {
   form.put(route('forms.update', props.form.id), {
-    onSuccess: () => closeModal(),
+    onSuccess: () => {
+            closeModal(),
+            toast.success('Form updated Successfully')
+        },
+        onError: () => {
+            toast.warning('Failed to update Form')
+        }
   });
 };
 </script>

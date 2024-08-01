@@ -3,9 +3,11 @@ import { ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import { useForm } from '@inertiajs/vue3';
+import { useToast } from 'vue-toastification';
 
 const props = defineProps(['form']);
 const deletingForm = ref(false);
+const toast = useToast();
 
 const form = useForm({
   doc_ref_code: props.form.doc_ref_code,
@@ -27,7 +29,13 @@ const closeModal = () => {
 
 const destroyForm = () => {
   form.delete(route('forms.destroy', props.form.id), {
-    onSuccess: () => closeModal(),
+    onSuccess: () => {
+            closeModal(),
+            toast.success('Form deleted Successfully')
+        },
+        onError: () => {
+            toast.warning('Failed to delete Form')
+        }
   });
 };
 </script>

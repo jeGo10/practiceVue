@@ -89,17 +89,11 @@ class FormController extends Controller
         $validatedData = $request->validate([
             'doc_ref_code' => 'required|string|max:255',
             'doc_title' => 'required|string|max:255',
-            'division' => 'required|string|max:255',
             'process_owner' => 'required|string|max:255',
             'status' => 'required|string|max:255',
             'doc_type' => 'required|string|max:255',
-            'request_type' => 'required|string|max:255',
-            'request_reason' => 'required|string|max:255',
-            'requester' => 'required|string|max:255',
-            'request_date' => 'required|date',
             'revision_num' => 'required|string|max:255',
             'effectivity_date' => 'required|date',
-            'file' => 'nullable|file|mimes:pdf,doc,docx'
         ]);
 
         $form->update($validatedData);

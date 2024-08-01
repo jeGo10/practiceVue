@@ -56,7 +56,6 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                         </ul>
                         <div v-if="currentTab === 'all'">
                             <div class="w-full">
-                                <table class="w-full text-center border-b border-collapse border-gray-200 table-auto border-x">
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
@@ -88,7 +87,6 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                         </div>
                         <div v-if="currentTab === 'active'">
                             <div class="w-full">
-                                <table class="w-full text-center border-b border-collapse border-gray-200 table-auto border-x">
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
@@ -119,7 +117,6 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                         </div>
                         <div v-if="currentTab === 'incomplete'">
                             <div class="w-full">
-                                <table class="w-full text-center border-b border-collapse border-gray-200 table-auto border-x">
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
