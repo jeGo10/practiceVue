@@ -5,12 +5,17 @@ import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
+
+const toast = useToast();
 
 const registeringUser = ref(false);
 
 const form = useForm({
     name: '',
     email: '',
+    password: '',
+    password_confirmation: '',
 });
 
 const registerUser = () => {
@@ -19,10 +24,19 @@ const registerUser = () => {
 
 const closeModal = () => {
     registeringUser.value = false;
-}
+    form.reset();
+};
 
 const addUser = () => {
-
+    form.post(route('UserManagement.store'), {
+        onSuccess: () => {
+            closeModal(),
+            toast.success('User registered successfully');
+        },
+        onError: () => {
+            toast.error('Failed to register user');
+        }
+    });
 };
 
 </script>
@@ -47,45 +61,74 @@ const addUser = () => {
 
         <!-- Body -->
         <div class="flex items-center justify-center m-10">
-            <form @submit.prevent="submit">
-        <div class="space-y-4">
+            <form @submit.prevent="addUser">
             <div>
-                <InputLabel for="name" value="Name"/>
+                <InputLabel for="name" value="Name" />
+
                 <TextInput
                     id="name"
-                    v-model="form.name"
                     type="text"
-                    placeholder="Username"
+                    class="mt-1 block w-full"
+                    v-model="form.name"
                     required
-                    />
+                    autofocus
+                    autocomplete="name"
+                />
+
+                <InputError class="mt-2" :message="form.errors.name" />
             </div>
-            <div>
-                <InputLabel for="email" value="Email"/>
+
+            <div class="mt-4">
+                <InputLabel for="email" value="Email" />
+
                 <TextInput
                     id="email"
+                    type="email"
+                    class="mt-1 block w-full"
                     v-model="form.email"
-                    type="text"
-                    placeholder="Email"
                     required
-                    />
+                    autocomplete="username"
+                />
+
+                <InputError class="mt-2" :message="form.errors.email" />
             </div>
-            <div>
-                <InputLabel for="status" value="Status"/>
-                <select class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="progress" v-model="form.progress" required>
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
-                </select>
+
+            <div class="mt-4">
+                <InputLabel for="password" value="Password" />
+
+                <TextInput
+                    id="password"
+                    type="password"
+                    class="mt-1 block w-full"
+                    v-model="form.password"
+                    required
+                    autocomplete="new-password"
+                />
+
+                <InputError class="mt-2" :message="form.errors.password" />
             </div>
-            <div class="flex justify-center items-center">
-                <PrimaryButton
-                    :disabled="form.processing"
-                    @click="addUser"
-                    >
-                    Register User
+
+            <div class="mt-4">
+                <InputLabel for="password_confirmation" value="Confirm Password" />
+
+                <TextInput
+                    id="password_confirmation"
+                    type="password"
+                    class="mt-1 block w-full"
+                    v-model="form.password_confirmation"
+                    required
+                    autocomplete="new-password"
+                />
+
+                <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Register
                 </PrimaryButton>
             </div>
-        </div>
-    </form>
+        </form>
 </div>
     </Modal>
 </section>

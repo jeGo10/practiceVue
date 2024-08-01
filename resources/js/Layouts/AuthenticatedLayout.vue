@@ -24,7 +24,6 @@ const isAdmin = computed(() => {
         <aside class="bg-slate-800 min-h-screen w-full sm:w-64 flex-shrink-0">
             <div class="h-screen flex flex-col justify-between">
                 <!-- Primary Navigation Menu -->
-                <div>
                     <div class="flex flex-col items-center m-2">
                         <!-- Logo -->
                         <div class="shrink-0 m-2.5 flex items-center">
@@ -51,8 +50,6 @@ const isAdmin = computed(() => {
                         </div>
                     </div>
                 </div>
-
-            </div>
         </aside>
 
         <!-- Main Content -->
@@ -170,6 +167,14 @@ const isAdmin = computed(() => {
             <main class="flex-1 p-4">
                 <slot />
             </main>
+            <footer class="flex justify-between bg-slate-100 border max-h-10">
+                <div>
+                    <span>Hello World</span>
+                </div>
+                <div>
+                    <span>Quality Management System v2.0</span>
+                </div>
+            </footer>
         </div>
     </div>
 </template>
