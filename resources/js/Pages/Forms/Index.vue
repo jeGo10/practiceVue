@@ -3,11 +3,17 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import CreateForm from './Partials/CreateForm.vue';
 import EditForm from './Partials/EditForm.vue';
 import DeleteForm from './Partials/DeleteForm.vue';
+import {Head} from '@inertiajs/vue3';
 
-const props = defineProps(['forms']);
+// Define props for forms and divisions
+const props = defineProps({
+  forms: Array,
+  divisions: Array,
+});
 </script>
 
 <template>
+    <Head title="Forms"/>
     <AuthenticatedLayout>
         <div class="row" style="margin:20px;">
             <div class="col-12">
@@ -29,14 +35,14 @@ const props = defineProps(['forms']);
                             </div>
                         </div>
                         <div style="margin: 20px; text-align: left;">
-                            <CreateForm/>
+                            <CreateForm :divisions="divisions"/>
                         </div>
                     </div>
 
-                    <!-------------------------------------------TABLE FOR DISPLAYED FILE --------------------------------------------------- -->
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
+                    <!-- Table for Displaying Files -->
+                    <div class="table-responsive min-h-96">
+                        <table class="table max-w-full">
+                            <thead class="border-b-2 border-black">
                                 <tr>
                                     <th>Document Reference Code</th>
                                     <th>Document Title</th>
@@ -49,7 +55,7 @@ const props = defineProps(['forms']);
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="form in props.forms" :key="form.id">
+                                <tr v-for="form in forms" :key="form.id">
                                     <td>{{ form.doc_ref_code }}</td>
                                     <td>{{ form.doc_title }}</td>
                                     <td>{{ form.revision_num }}</td>
@@ -59,7 +65,7 @@ const props = defineProps(['forms']);
                                     <td>{{ form.status }}</td>
                                     <td>
                                         <div class="flex space-x-2">
-                                            <!-- Add your EditForm and DeleteForm components here -->
+                                            <!-- EditForm and DeleteForm components -->
                                             <EditForm :form="form" />
                                             <DeleteForm :form="form" />
                                         </div>

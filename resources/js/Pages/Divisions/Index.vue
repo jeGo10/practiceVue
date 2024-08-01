@@ -59,6 +59,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
+                                            <th class="p-2 w-14">No.</th>
                                             <th class="p-2">Division</th>
                                             <th class="p-2">Status</th>
                                             <th class="p-2">Date Created</th>
@@ -66,7 +67,8 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="divisions in props.divisions" :key="divisions.id">
+                                        <tr v-for="(divisions, index) in props.divisions" :key="divisions.id">
+                                            <td class="p-2 w-14">{{ index + 1 }}</td>
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
                                             <span v-if="divisions.status ==1" class="px-2 py-1 text-white bg-green-500 rounded">Active</span>
@@ -90,6 +92,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
+                                            <th class="p-2 w-14">No.</th>
                                             <th class="p-2">Division</th>
                                             <th class="p-2">Status</th>
                                             <th class="p-2">Date Created</th>
@@ -97,7 +100,8 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="divisions in activeDivision" :key="divisions.id">
+                                        <tr v-for="(divisions, index) in activeDivision" :key="divisions.id">
+                                            <td class="p-2 w-14">{{ index + 1 }}</td>
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
                                             <span class="px-2 py-1 text-white bg-green-500 rounded">Active</span>
@@ -120,6 +124,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
                                     <thead>
                                         <tr class="border-b">
+                                            <th class="p-2 w-14">No.</th>
                                             <th class="p-2">Division</th>
                                             <th class="p-2">Status</th>
                                             <th class="p-2">Date Created</th>
@@ -127,7 +132,8 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="divisions in inactiveDivision" :key="divisions.id">
+                                        <tr v-for="(divisions, index) in inactiveDivision" :key="divisions.id">
+                                            <td class="p-2 w-14">{{ index + 1 }}</td>
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
                                             <span class="px-2 py-1 text-white bg-red-500 rounded">Inactive</span>

@@ -44,8 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('archives', ArchiveController::class);
 
     // This route should only be access Admin
-    Route::resource('UserManagement', UserManagementController::class);
-
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::resource('UserManagement', UserManagementController::class);
+     });
 });
 
 

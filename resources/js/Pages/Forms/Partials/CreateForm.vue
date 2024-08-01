@@ -11,6 +11,7 @@ import { useToast } from 'vue-toastification';
 // State for managing modal visibility
 const creatingDocument = ref(false);
 const toast = useToast();
+const props = defineProps(['divisions']);
 
 // Initialize form with useForm
 const form = useForm({
@@ -37,13 +38,13 @@ const showModal = () => {
 // Function to close the modal
 const closeModal = () => {
     creatingDocument.value = false;
-    form.reset();
 };
 
 // Function to submit the form
 const submit = () => {
     form.post(route('forms.store'), {
         onSuccess: () => {
+            form.reset(),
             closeModal(),
             toast.success('Form addedd Successfully')
         },
@@ -109,10 +110,10 @@ const submit = () => {
                                     class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
-                                    <option value="N/A">N/A</option>
-                                    <option value="AFD">AFD</option>
-                                    <option value="ORD">ORD</option>
-                                    <option value="TOD">TOD</option>
+                                <option value="" disabled>Select Division</option>
+                                <option v-for="division in divisions" :key="division.id" :value="division.name">
+                                        {{ division.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div>
@@ -127,13 +128,16 @@ const submit = () => {
                             </div>
                             <div>
                                 <InputLabel for="status" value="Status"/>
-                                <TextInput
-                                    id="status"
-                                    v-model="form.status"
-                                    type="text"
-                                    placeholder="Enter Status"
-                                    required
-                                />
+                                <select
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                id="status"
+                                v-model="form.status"
+                                required
+                            >
+                                <option value="" disabled>Select Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
                             </div>
                             <div>
                                 <InputLabel for="doc_type" value="Document Type"/>
@@ -222,7 +226,7 @@ const submit = () => {
                                 <input
                                     id="file"
                                     type="file"
-                                    class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    class="border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     @change="e => form.file = e.target.files[0]"
                                     required
                                 />

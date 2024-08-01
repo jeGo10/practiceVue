@@ -167,12 +167,13 @@ const isAdmin = computed(() => {
             <main class="flex-1 p-4">
                 <slot />
             </main>
-            <footer class="flex justify-between bg-slate-100 border max-h-10">
+            <footer class="flex justify-between bg-slate-100 border max-h-10 p-2 items-center">
                 <div>
-                    <span>Hello World</span>
+                    <span class="text-xs font-bold">Copyright © 2024 Department of Information Communications and Technology. </span>
+                    <span class="text-xs">All rights reserved</span>
                 </div>
                 <div>
-                    <span>Quality Management System v2.0</span>
+                    <span class="text-xs">QMS version 2.0 - Beta</span>
                 </div>
             </footer>
         </div>
