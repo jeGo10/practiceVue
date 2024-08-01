@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use App\Models\User;
+use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -19,8 +20,11 @@ class FormController extends Controller
         // Eager load the 'roles' relationship using a query builder
         $user = User::with('roles')->find(Auth::id());
         $forms = Form::all();
+        $divisions = Division::where('status', '1')->get();
+
         return Inertia::render('Forms/Index', [
             'forms' => $forms,
+            'divisions' => $divisions,
             'auth' => [
                 'user' => $user
             ]
