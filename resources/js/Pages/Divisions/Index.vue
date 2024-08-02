@@ -28,7 +28,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
         <div class="container mx-auto mt-4">
             <div class="mx-auto border rounded-lg shadow-lg card max-w-7xl">
                 <div class="flex items-center justify-between p-4 bg-gray-100 card-header">
-                    <h1 class="text-xl font-bold">Division</h1>
+                    <h1 class="text-4xl font-bold uppercase">Divisions</h1>
                     <div v-if="isAdmin" class="ml-auto">
                         <CreateDivision />
                     </div>

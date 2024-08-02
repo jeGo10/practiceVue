@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Division extends Model
+class Project extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "name",
+        "division_id",
+        "title",
         "status",
     ];
-    public function project(): HasMany
+    public function division(): BelongsTo
     {
-        return $this->hasMany(Project::class);
+        return $this->belongsTo(Division::class);
     }
-
 }

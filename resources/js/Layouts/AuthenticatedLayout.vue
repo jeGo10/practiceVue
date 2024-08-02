@@ -41,7 +41,11 @@ const isAdmin = computed(() => {
                             <SidebarDropdown />
 
                             <NavLink :href="route('divisions.index')" :active="route().current('divisions.index')">
-                                <i class="fa fa-folder text-lg"></i><span class="ml-2">Division</span>
+                                <i class="fa fa-folder text-lg"></i><span class="ml-2">Divisions</span>
+                            </NavLink>
+
+                            <NavLink :href="route('projects.index')" :active="route().current('projects.index')">
+                                <i class="fa fa-clipboard text-lg"></i><span class="ml-2">Projects</span>
                             </NavLink>
 
                             <NavLink v-if="isAdmin" :href="route('UserManagement.index')" :active="route().current('UserManagement.index')">

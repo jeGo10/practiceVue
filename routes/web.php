@@ -7,6 +7,7 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -40,8 +41,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('chirps', ChirpController::class);
     Route::resource('tasks', TaskController::class);
     Route::resource('divisions', DivisionController::class);
+    Route::resource('projects', ProjectController::class);
     Route::resource('forms', FormController::class);
     Route::resource('archives', ArchiveController::class);
+
 
     // This route should only be access Admin
     Route::group(['middleware' => ['role:admin']], function () {
