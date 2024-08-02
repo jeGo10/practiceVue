@@ -61,7 +61,7 @@ const editForm = () => {
 
 <template>
     <div>
-        <PrimaryButton @click="updateForm" class="bg-blue-700 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-900">
+        <PrimaryButton @click="updateForm">
             <i class="text-sm fa fa-edit text-white-500"></i>
         </PrimaryButton>
 

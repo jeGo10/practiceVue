@@ -94,7 +94,7 @@ const changeTab = (tabName) => {
             <!-- Quality Policy Tab -->
             <div v-if="activeTab === 'qualitypolicy'" class="tab-pane fade show">
               <div class="">
-                <div class=" m-3 p-2 border-2 border-[#f4f6f7] rounded-md">
+                <div class=" m-3 p-2">
                   <h1 class="entry-title text-center pb-1 "><strong>Quality Policy</strong></h1>
                   <p class="text-center"><i>QPL/r0/01Feb24</i></p>
                   <div class="">
@@ -112,7 +112,7 @@ const changeTab = (tabName) => {
             <!-- Quality Objectives Tab -->
             <div v-if="activeTab === 'qualityobjectives'" class="tab-pane fade show">
               <div class="p-3">
-                <div class="p-3 border-2 border-[#f4f6f7] rounded-md">
+                <div class="p-3">
                   <h1 class="entry-title text-center"><strong>Quality Objectives</strong></h1>
                   <p class="entry-title text-center"><i>QP-01/r0/01Feb24</i></p>
 
@@ -241,8 +241,8 @@ const changeTab = (tabName) => {
 
   .content-box {
     background-color: #ffffff;
-    border: 1px solid #f4f6f7;
-    border-radius: 10px;
+    /* border: 1px solid #f4f6f7;
+    border-radius: 10px; */
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.932);
     padding: 20px;
     margin-bottom: 20px;
@@ -251,9 +251,9 @@ const changeTab = (tabName) => {
   .core-values {
     align-self: flex-end;
     background-color: #ffffff; /* Tailwind Slate-100 */
-    padding: 15px;
-    border: 1px solid #f4f6f7;
-    border-radius: 10px;
+    padding: 20px;
+    /* border: 1px solid #f4f6f7;
+    border-radius: 10px; */
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.932);
   }
 </style>
