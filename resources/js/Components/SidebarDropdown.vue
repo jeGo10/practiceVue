@@ -30,6 +30,11 @@ onMounted(() => {
         <transition name="slide-fade">
             <ul v-show="isOpen" class="p-2 space-y-2 bg-slate-900 rounded-b-lg">
                 <li>
+                    <NavLink>
+                        <i class="fa fa-book text-lg"></i><span class="ml-2">Manuals</span>
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink :href="route('forms.index')" :active="route().current('forms.index')">
                         <i class="fa fa-file-pdf-o text-lg"></i><span class="ml-2">Forms</span>
                     </NavLink>

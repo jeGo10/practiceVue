@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import CreateForm from './Partials/CreateForm.vue';
 import EditForm from './Partials/EditForm.vue';
 import DeleteForm from './Partials/DeleteForm.vue';
+import ShowForm from './Partials/ShowForm.vue';
 import {Head} from '@inertiajs/vue3';
 
 // Define props for forms and divisions
@@ -66,6 +67,7 @@ const props = defineProps({
                                     <td>
                                         <div class="flex space-x-2">
                                             <!-- EditForm and DeleteForm components -->
+                                            <ShowForm :form="form"/>
                                             <EditForm :form="form" />
                                             <DeleteForm :form="form" />
                                         </div>

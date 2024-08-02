@@ -67,7 +67,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(divisions, index) in props.divisions" :key="divisions.id">
+                                        <tr v-for="(divisions, index) in props.divisions" :key="divisions.id" class="hover:bg-gray-100">
                                             <td class="p-2 w-14">{{ index + 1 }}</td>
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
@@ -100,7 +100,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(divisions, index) in activeDivision" :key="divisions.id">
+                                        <tr v-for="(divisions, index) in activeDivision" :key="divisions.id" class="hover:bg-gray-100">
                                             <td class="p-2 w-14">{{ index + 1 }}</td>
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">
@@ -132,7 +132,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(divisions, index) in inactiveDivision" :key="divisions.id">
+                                        <tr v-for="(divisions, index) in inactiveDivision" :key="divisions.id" class="hover:bg-gray-100">
                                             <td class="p-2 w-14">{{ index + 1 }}</td>
                                             <td class="p-2">{{ divisions.name }}</td>
                                             <td class="p-2">

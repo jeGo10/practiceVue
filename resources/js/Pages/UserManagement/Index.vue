@@ -30,7 +30,7 @@ const props = defineProps(['users']);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="user in users" :key="user.id" class="hover:bg-gray-50">
+                            <tr v-for="user in users" :key="user.id" class="hover:bg-gray-100">
                                 <td class="p-2">{{ user.name }}</td>
                                 <td class="p-2">{{ user.email }}</td>
                                 <td class="p-2">
