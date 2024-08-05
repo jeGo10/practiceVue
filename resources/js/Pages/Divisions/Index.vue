@@ -8,6 +8,7 @@ import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({
     divisions: { type: Array, default: () => [] },
+    historyLogs: { type: Array, default: () => [] },
     auth: { type: Object, default: () => ({ user: { role: '' } }) }
 });
 
@@ -27,7 +28,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
     <AuthenticatedLayout>
         <div class="container mx-auto mt-4">
             <div class="mx-auto border rounded-lg shadow-lg card max-w-7xl">
-                <div class="flex items-center justify-between p-4 bg-gray-100 card-header">
+                <div class="flex justify-between p-4 bg-gray-100 card-header">
                     <h1 class="text-4xl font-bold uppercase">Divisions</h1>
                     <div v-if="isAdmin" class="ml-auto">
                         <CreateDivision />
@@ -35,7 +36,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                 </div>
                 <div class="p-4 card-body">
                     <!-- All Tasks Tab -->
-                     <!-- Tab Navigation -->
+                     <!-- Tab Navigation/Filter by status -->
                     <div class="flex flex-col">
                         <ul class="flex bg-gray-300 rounded-t-lg nav nav-tabs">
                             <li class="nav-item">
@@ -54,6 +55,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                 </a>
                             </li>
                         </ul>
+                        <!-- Tab filter status ALL -->
                         <div v-if="currentTab === 'all'">
                             <div class="w-full">
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
@@ -87,6 +89,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                 </table>
                             </div>
                         </div>
+                        <!-- Tab filter status Active -->
                         <div v-if="currentTab === 'active'">
                             <div class="w-full">
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
@@ -119,6 +122,7 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                                 </table>
                             </div>
                         </div>
+                        <!-- Tab filter status incomplete -->
                         <div v-if="currentTab === 'incomplete'">
                             <div class="w-full">
                                 <table class="table-fixed w-full border-b border-x border-gray-200 border-collapse text-center">
@@ -154,6 +158,17 @@ const isAdmin = computed(() => props.auth.user?.roles.some(role => role.name ===
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- History Logs -->
+        <div class="card mx-auto mt-10 min-h-96 max-h-min border rounded-lg shadow-lg max-w-7xl">
+            <div class="card-header">
+                <h3>History Logs</h3>
+            </div>
+            <div class="card-body">
+                    <div v-for="log in historyLogs" :key="log.id">
+                        {{ new Date(log.created_at).toLocaleDateString('en-US') }} {{ new Date(log.created_at).toLocaleTimeString('en-US') }}: {{ log.action }}
+                    </div>
+                </div>
         </div>
     </AuthenticatedLayout>
 </template>

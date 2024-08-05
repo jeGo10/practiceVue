@@ -1,5 +1,5 @@
 <script setup>
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import ShowButton from '@/Components/ShowButton.vue';
 import Modal from '@/Components/Modal.vue';
 import DisplayLabel from '@/Components/DisplayLabel.vue';
 import { ref } from 'vue';
@@ -21,9 +21,9 @@ const closeModal = () => {
 
 <template>
     <div>
-        <PrimaryButton @click="showForm" class="bg-sky-600 hover:bg-sky-800">
+        <ShowButton @click="showForm">
             <i class="text-sm fa fa-eye"></i>
-        </PrimaryButton>
+        </ShowButton>
 
         <section>
             <Modal :show="showingForm" @close="closeModal">
