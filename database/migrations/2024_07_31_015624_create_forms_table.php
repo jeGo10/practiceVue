@@ -17,16 +17,17 @@ return new class extends Migration
             $table->string('doc_ref_code');
             $table->string('doc_title');
             $table->string('division');
-            $table->string('process_owner');
-            $table->string('status');
+            $table->string('project');
+            $table->string('owner');
+            $table->boolean('status');
             $table->string('doc_type');
             $table->string('request_type');
             $table->string('request_reason');
-            $table->string('requester');
             $table->date('request_date');
-            $table->string('revision_num');
+            $table->integer('revision_num');
             $table->date('effectivity_date');
             $table->string('file');
+            $table->string('type');
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // If forms are related to users
             $table->timestamps();
         });

@@ -59,7 +59,7 @@ const closeModal = () => {
                     <!-- Second Column -->
                     <div class="flex items-center mb-4">
                         <DisplayLabel :value="'Process Owner:'" class="mr-2"/>
-                        <span>{{ props.form.process_owner }}</span>
+                        <span>{{ props.form.owner }}</span>
                     </div>
                     <div class="flex items-center mb-4">
                         <DisplayLabel :value="'Status:'" class="mr-2"/>

@@ -2,32 +2,35 @@
 import { ref } from 'vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
-import Modal from '@/Components/Modal.vue';
+import BiggerModal from '@/Components/BiggerModal.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useToast } from 'vue-toastification';
 
-
 // State for managing modal visibility
 const creatingDocument = ref(false);
 const toast = useToast();
-const props = defineProps(['divisions']);
+const props = defineProps({
+    divisions: Array,
+    projects: Array,
+});
 
 // Initialize form with useForm
 const form = useForm({
     doc_ref_code: '',
     doc_title: '',
     division: '',
-    process_owner: '',
-    status: '',
+    project: '',
+    owner: '',
+    status: 'Active',
     doc_type: '',
     request_type: '',
     request_reason: '',
-    requester: '',
     request_date: '',
-    revision_num: '',
+    revision_num: '0',
     effectivity_date: '',
     file: null,
+    type: '',
 });
 
 // Function to show the modal
@@ -46,7 +49,7 @@ const submit = () => {
         onSuccess: () => {
             form.reset(),
             closeModal(),
-            toast.success('Form addedd Successfully')
+            toast.success('Form added Successfully')
         },
         onError: () => {
             toast.warning('Failed to add Form')
@@ -61,7 +64,7 @@ const submit = () => {
         <PrimaryButton @click="showModal">Create New Document</PrimaryButton>
 
         <!-- Modal for creating new document -->
-        <Modal :show="creatingDocument" @close="closeModal">
+        <BiggerModal :show="creatingDocument" @close="closeModal">
             <!-- Modal Head -->
             <div class="flex items-center justify-between p-4 border-b rounded-t">
                 <h3 class="text-xl">Create New Document</h3>
@@ -81,7 +84,7 @@ const submit = () => {
             <div class="flex items-center justify-center m-10">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-3 gap-4">
                             <div>
                                 <InputLabel for="doc_ref_code" value="Doc Ref. Code"/>
                                 <TextInput
@@ -110,34 +113,46 @@ const submit = () => {
                                     class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
-                                <option value="" disabled>Select Division</option>
-                                <option v-for="division in divisions" :key="division.id" :value="division.name">
+                                    <option value="" disabled>Select Division</option>
+                                    <option v-for="division in divisions" :key="division.id" :value="division.name">
                                         {{ division.name }}
                                     </option>
                                 </select>
                             </div>
                             <div>
-                                <InputLabel for="process_owner" value="Process Owner"/>
+                                <InputLabel for="project" value="Project/Unit"/>
+                                <select
+                                    id="project"
+                                    v-model="form.project"
+                                    class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    required
+                                >
+                                    <option value="" disabled>Select Project</option>
+                                    <option v-for="project in projects" :key="project.id" :value="project.title">
+                                        {{ project.title }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div>
+                                <InputLabel for="owner" value="Owner"/>
                                 <TextInput
-                                    id="process_owner"
-                                    v-model="form.process_owner"
+                                    id="owner"
+                                    v-model="form.owner"
                                     type="text"
-                                    placeholder="Enter Process Owner"
+                                    placeholder="Enter Owner"
                                     required
                                 />
                             </div>
                             <div>
                                 <InputLabel for="status" value="Status"/>
-                                <select
-                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
-                                id="status"
-                                v-model="form.status"
-                                required
-                            >
-                                <option value="" disabled>Select Status</option>
-                                <option value="Active">Active</option>
-                                <option value="Inactive">Inactive</option>
-                            </select>
+                                <TextInput
+                                    id="status"
+                                    v-model="form.status"
+                                    type="text"
+                                    placeholder="Enter Status"
+                                    class="bg-gray-100"
+                                    disabled
+                                />
                             </div>
                             <div>
                                 <InputLabel for="doc_type" value="Document Type"/>
@@ -147,6 +162,7 @@ const submit = () => {
                                     class="border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                     required
                                 >
+                                    <option value="" disabled>Select Document Type</option>
                                     <option value="Quality Manual">Quality Manual</option>
                                     <option value="Quality Procedure">Quality Procedure</option>
                                     <option value="Quality Procedure Form">Quality Procedure Form</option>
@@ -163,13 +179,17 @@ const submit = () => {
                             </div>
                             <div>
                                 <InputLabel for="request_type" value="Request Type"/>
-                                <TextInput
+                                <select
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                                     id="request_type"
                                     v-model="form.request_type"
-                                    type="text"
-                                    placeholder="Enter Request Type"
                                     required
-                                />
+                                >
+                                    <option value="" disabled>Select Request Type</option>
+                                    <option value="Creation">Creation</option>
+                                    <option value="Revision">Revision</option>
+                                    <option value="Deletion">Deletion</option>
+                                </select>
                             </div>
                             <div>
                                 <InputLabel for="request_reason" value="Request Reason"/>
@@ -208,7 +228,8 @@ const submit = () => {
                                     v-model="form.revision_num"
                                     type="text"
                                     placeholder="Enter Revision Number"
-                                    required
+                                    class="bg-gray-100"
+                                    disabled
                                 />
                             </div>
                             <div>
@@ -221,7 +242,20 @@ const submit = () => {
                                     required
                                 />
                             </div>
-                            <div class="col-span-2">
+                            <div>
+                                <InputLabel for="type" value="Type"/>
+                                <select
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                                    id="type"
+                                    v-model="form.type"
+                                    required
+                                >
+                                    <option value="" disabled>Select Type</option>
+                                    <option value="Active">Internal</option>
+                                    <option value="Inactive">External</option>
+                                </select>
+                            </div>
+                            <div class="col-span-3">
                                 <InputLabel for="file" value="File"/>
                                 <input
                                     id="file"
@@ -240,6 +274,6 @@ const submit = () => {
                     </div>
                 </form>
             </div>
-        </Modal>
+        </BiggerModal>
     </div>
 </template>

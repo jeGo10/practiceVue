@@ -1,7 +1,6 @@
 <!-- resources/js/Pages/Archive/Index.vue -->
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import CreateArchive from './Partials/CreateArchive.vue';
 
 const props = defineProps(['archives']);
 </script>
@@ -28,10 +27,6 @@ const props = defineProps(['archives']);
                                 <span><strong>IMPORTANT:</strong> Only the softcopy of documents available on the QMS portal is considered the <strong>CONTROLLED COPY.</strong></span><br>
                                 <span>Any downloaded or printed copies of documents are deemed <strong>UNCONTROLLED</strong>.</span>
                             </div>
-                        </div>
-                        <div style="margin: 20px; text-align: left;">
-                            <CreateArchive/>
-
                         </div>
                     </div>
                       <!-------------------------------------------TABLE FOR DISPLAYED FILE --------------------------------------------------- -->

@@ -14,16 +14,17 @@ class Form extends Model
         'doc_ref_code',
         'doc_title',
         'division',
-        'process_owner',
+        'project',
+        'owner',
         'status',
         'doc_type',
         'request_type',
         'request_reason',
-        'requester',
         'request_date',
         'revision_num',
         'effectivity_date',
         'file',
+        'type',
         'user_id',  // Assuming the form is linked to a user
     ];
 

@@ -12,21 +12,19 @@ const editingForm = ref(false);
 const toast = useToast();
 
 const form = useForm({
-  doc_ref_code: props.form.doc_ref_code || '',
   doc_title: props.form.doc_title || '',
   revision_num: props.form.revision_num || '',
   effectivity_date: props.form.effectivity_date || '',
-  process_owner: props.form.process_owner || '',
+  owner: props.form.owner || '',
   doc_type: props.form.doc_type || '',
   status: props.form.status || '',
 });
 
 watch(() => props.form, (newForm) => {
-  form.doc_ref_code = newForm.doc_ref_code;
   form.doc_title = newForm.doc_title;
   form.revision_num = newForm.revision_num;
   form.effectivity_date = newForm.effectivity_date;
-  form.process_owner = newForm.process_owner;
+  form.owner = newForm.owner;
   form.doc_type = newForm.doc_type;
   form.status = newForm.status;
 }, { immediate: true });
@@ -37,11 +35,10 @@ const updateForm = () => {
 
 const closeModal = () => {
   editingForm.value = false;
-  form.doc_ref_code = props.form.doc_ref_code || '';
   form.doc_title = props.form.doc_title || '';
   form.revision_num = props.form.revision_num || '';
   form.effectivity_date = props.form.effectivity_date || '';
-  form.process_owner = props.form.process_owner || '';
+  form.owner = props.form.owner || '';
   form.doc_type = props.form.doc_type || '';
   form.status = props.form.status || '';
 };
@@ -84,16 +81,6 @@ const editForm = () => {
                 <div class="flex items-center justify-center m-10">
                     <form @submit.prevent="editForm" class="grid grid-cols-1 gap-4 sm:grid-cols-3">
                         <div>
-                            <InputLabel for="doc_ref_code" value="Document Reference Code"/>
-                            <TextInput
-                                id="doc_ref_code"
-                                v-model="form.doc_ref_code"
-                                type="text"
-                                placeholder="Document Reference Code"
-                                required
-                            />
-                        </div>
-                        <div>
                             <InputLabel for="doc_title" value="Document Title"/>
                             <TextInput
                                 id="doc_title"
@@ -124,12 +111,12 @@ const editForm = () => {
                             />
                         </div>
                         <div>
-                            <InputLabel for="process_owner" value="Process Owner"/>
+                            <InputLabel for="owner" value="Owner"/>
                             <TextInput
-                                id="process_owner"
-                                v-model="form.process_owner"
+                                id="owner"
+                                v-model="form.owner"
                                 type="text"
-                                placeholder="Process Owner"
+                                placeholder="Owner"
                                 required
                             />
                         </div>
@@ -145,13 +132,16 @@ const editForm = () => {
                         </div>
                         <div>
                             <InputLabel for="status" value="Status"/>
-                            <TextInput
+                            <select
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                                 id="status"
                                 v-model="form.status"
-                                type="text"
-                                placeholder="Status"
                                 required
-                            />
+                            >
+                                <option value="" disabled>Select Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
                         </div>
                         <div class="flex items-center justify-center sm:col-span-3">
                             <PrimaryButton :disabled="form.processing" type="submit">
