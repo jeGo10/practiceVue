@@ -6,6 +6,7 @@ use App\Models\Form;
 use App\Models\User;
 use App\Models\Division;
 use App\Models\Project;
+use App\Models\Archive;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -122,7 +123,28 @@ class FormController extends Controller
      */
     public function destroy(Form $form)
     {
-        $form->delete();
+         // Create an archive entry
+         $archive = new Archive();
+         $archive->doc_ref_code = $form->doc_ref_code;
+         $archive->doc_title = $form->doc_title;
+         $archive->division = $form->division;
+         $archive->project = $form->project;
+         $archive->owner = $form->owner;
+         $archive->status = $form->status;
+         $archive->doc_type = $form->doc_type;
+         $archive->request_type = $form->request_type;
+         $archive->request_reason = $form->request_reason;
+         $archive->request_date = $form->request_date;
+         $archive->revision_num = $form->revision_num;
+         $archive->effectivity_date = $form->effectivity_date;
+         $archive->file = $form->file;
+         $archive->type = $form->type;
+         $archive->archived_at = now();
+
+         $archive->save();
+
+         // Delete the form
+         $form->delete();
 
         return redirect()->route('forms.index');
     }

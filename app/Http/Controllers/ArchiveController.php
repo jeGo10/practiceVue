@@ -15,8 +15,10 @@ class ArchiveController extends Controller
     public function index()
     {
         $user = User::with('roles')->find(Auth::id());
+        $archive = Archive::all();
 
         return Inertia::render('Archive/Index', [
+            'archives' => $archive,
             'auth' => [
                 'user' => $user
             ]
