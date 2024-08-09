@@ -47,24 +47,24 @@ const filteredArchives = computed(() => {
                         <table class="table">
                             <thead class="border-b-2 border-black">
                                 <tr>
-                                    <th>Document Reference Code</th>
-                                    <th>Document Title</th>
-                                    <th>Revision Number</th>
-                                    <th>Effectivity Date</th>
-                                    <th>Owner</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
+                                    <th class="px-4">Document Reference Code</th>
+                                    <th class="px-4">Document Title</th>
+                                    <th class="px-4">Revision Number</th>
+                                    <th class="px-4">Effectivity Date</th>
+                                    <th class="px-4">Owner</th>
+                                    <th class="px-4">Type</th>
+                                    <th class="px-4">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="archive in filteredArchives" :key="archive.id">
-                                    <td>{{ archive.doc_ref_code }}</td>
-                                    <td>{{ archive.doc_title }}</td>
-                                    <td>{{ archive.revision_num }}</td>
-                                    <td>{{ archive.effectivity_date }}</td>
-                                    <td>{{ archive.owner }}</td>
-                                    <td>{{ archive.doc_type }}</td>
-                                    <td>{{ archive.status }}</td>
+                                    <td class="px-4">{{ archive.doc_ref_code }}</td>
+                                    <td class="px-4">{{ archive.doc_title }}</td>
+                                    <td class="px-4">{{ archive.revision_num }}</td>
+                                    <td class="px-4">{{ archive.effectivity_date }}</td>
+                                    <td class="px-4">{{ archive.owner }}</td>
+                                    <td class="px-4">{{ archive.doc_type }}</td>
+                                    <td class="px-4">{{ archive.status }}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Archive;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -69,7 +70,7 @@ class FormController extends Controller
     // Handle file upload
     if ($request->hasFile('file')) {
         $filePath = $request->file('file')->store('documents', 'public');
-        $validatedData['file_path'] = $filePath; // assuming there's a file_path column in your table
+        $validatedData['file'] = $filePath; // assuming there's a file_path column in your table
     }
 
     // Create a new form entry
@@ -117,7 +118,17 @@ class FormController extends Controller
 
         return redirect()->route('forms.index');
     }
+    // Get the PDF file path
+    public function getPDF(Form $form)
+    {
+        $filePath = storage_path('app/public/' . $form->file);
 
+        if (!file_exists($filePath)) {
+            abort(404, 'File not found');
+        }
+
+        return response()->file($filePath);
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -130,7 +141,7 @@ class FormController extends Controller
          $archive->division = $form->division;
          $archive->project = $form->project;
          $archive->owner = $form->owner;
-         $archive->status = $form->status;
+         $archive->status = 'Inactive';
          $archive->doc_type = $form->doc_type;
          $archive->request_type = $form->request_type;
          $archive->request_reason = $form->request_reason;

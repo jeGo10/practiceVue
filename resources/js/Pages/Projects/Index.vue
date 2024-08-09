@@ -49,7 +49,7 @@ const divisionNameMap = computed(() => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(project, index) in props.projects" :key="project.id" class="hover:bg-gray-100">
+                                <tr v-for="(project, index) in props.projects" :key="project.id" class="border-b hover:bg-gray-100 even:bg-gray-50">
                                     <td class="p-2 w-14">{{ index + 1 }}</td>
                                     <td class="p-2">{{ project.title }}</td>
                                     <td class="p-2">

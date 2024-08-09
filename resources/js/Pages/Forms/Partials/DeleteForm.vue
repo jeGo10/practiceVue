@@ -16,7 +16,7 @@ const form = useForm({
   effectivity_date: props.form.effectivity_date,
   process_owner: props.form.process_owner,
   doc_type: props.form.doc_type,
-  status: props.form.status,
+  status: 'Inactive',
 });
 
 const deleteForm = () => {

@@ -44,14 +44,17 @@ const closeModal = () => {
 };
 
 const editForm = () => {
+  // Increment the revision number before updating the form
+  form.revision_num = (parseInt(form.revision_num, 10) + 1).toString();
+
   form.put(route('forms.update', props.form.id), {
     onSuccess: () => {
-            closeModal(),
-            toast.success('Form updated Successfully')
-        },
-        onError: () => {
-            toast.warning('Failed to update Form')
-        }
+      closeModal();
+      toast.success('Form updated successfully');
+    },
+    onError: () => {
+      toast.warning('Failed to update form');
+    }
   });
 };
 </script>
@@ -95,9 +98,9 @@ const editForm = () => {
                             <TextInput
                                 id="revision_num"
                                 v-model="form.revision_num"
-                                type="text"
+                                type="number"
                                 placeholder="Revision Number"
-                                required
+                                disabled
                             />
                         </div>
                         <div>
@@ -153,4 +156,4 @@ const editForm = () => {
             </Modal>
         </section>
     </div>
-    </template>
+</template>
