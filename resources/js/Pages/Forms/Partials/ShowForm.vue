@@ -1,22 +1,35 @@
 <script setup>
 import ShowButton from '@/Components/ShowButton.vue';
-import Modal from '@/Components/Modal.vue';
+import BiggerModal from '@/Components/BiggerModal.vue';
 import DisplayLabel from '@/Components/DisplayLabel.vue';
 import { ref } from 'vue';
+import axios from 'axios';
 
 const props = defineProps({
   form: Object,
 });
 
 const showingForm = ref(false);
+const pdfUrl = ref('');
 
-const showForm = () => {
+const showForm = async () => {
     showingForm.value = true;
-}
+    // Display embedded file from storage/app/public/documents
+    try {
+        const response = await axios.get(`/forms/${props.form.id}/pdf`, { responseType: 'blob' });
+        const blob = new Blob([response.data], { type: 'application/pdf' });
+        pdfUrl.value = URL.createObjectURL(blob);
+    } catch (error) {
+        console.error('Error fetching PDF:', error);
+    }
+};
 
 const closeModal = () => {
     showingForm.value = false;
-}
+    // Revoke the object URL to free up memory
+    URL.revokeObjectURL(pdfUrl.value);
+    pdfUrl.value = '';
+};
 </script>
 
 <template>
@@ -26,7 +39,7 @@ const closeModal = () => {
         </ShowButton>
 
         <section>
-            <Modal :show="showingForm" @close="closeModal">
+            <BiggerModal :show="showingForm" @close="closeModal">
                 <!-- Head -->
                 <div class="flex items-center justify-between p-4 border-b rounded-t">
                     <h3 class="text-xl">
@@ -96,7 +109,15 @@ const closeModal = () => {
                         <span>{{ props.form.effectivity_date }}</span>
                     </div>
                 </div>
-            </Modal>
+
+                <!-- PDF Embed Section -->
+                <div class="p-4" v-if="pdfUrl">
+                    <embed :src="pdfUrl" type="application/pdf" width="100%" height="600px" />
+                </div>
+                <div v-else class="p-4">
+                    <i class="fa fa-circle-o-notch mr-2"></i>Loading PDF...
+                </div>
+            </BiggerModal>
         </section>
     </div>
 </template>

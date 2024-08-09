@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('divisions', DivisionController::class);
     Route::resource('projects', ProjectController::class);
     Route::resource('forms', FormController::class);
+    Route::get('/forms/{form}/pdf', [FormController::class, 'getPDF']);
     Route::resource('archives', ArchiveController::class);
 
 

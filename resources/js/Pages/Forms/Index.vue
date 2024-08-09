@@ -38,7 +38,7 @@ const filteredForms = computed(() => {
 <template>
     <Head title="Forms"/>
     <AuthenticatedLayout>
-      <div class="row" style="margin:20px;">
+      <div class="row" style="margin:5px;">
         <div class="col-12">
           <div class="card">
             <div class="text-center alert alert-dark" style="margin-left: 20px; margin-right: 20px; margin-top: 20px; background-color: #0693e3; color: #ffffff;">
@@ -62,39 +62,39 @@ const filteredForms = computed(() => {
             </div>
 
             <!-- Table for Displaying Files -->
-            <div class="table-responsive min-h-96">
-              <table class="table max-w-full">
-                <thead class="border-b-2 border-black">
-                  <tr>
-                    <th>Document Reference Code</th>
-                    <th>Document Title</th>
-                    <th>Revision Number</th>
-                    <th>Effectivity Date</th>
-                    <th>Owner</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="form in filteredForms" :key="form.id">
-                    <td>{{ form.doc_ref_code }}</td>
-                    <td>{{ form.doc_title }}</td>
-                    <td>{{ form.revision_num }}</td>
-                    <td>{{ form.effectivity_date }}</td>
-                    <td>{{ form.owner }}</td>
-                    <td>{{ form.doc_type }}</td>
-                    <td>{{ form.status }}</td>
-                    <td>
-                      <div class="flex space-x-2">
-                        <ShowForm :form="form"/>
-                        <EditForm v-if="isAdmin" :form="form" />
-                        <DeleteForm v-if="isAdmin" :form="form" />
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="min-h-96 max-h-min">
+                    <table class="table-auto w-full">
+                        <thead class="border-b-2 border-black">
+                            <tr>
+                                <th class="px-4 pb-2">Document Reference Code</th>
+                                <th class="px-4 pb-2">Document Title</th>
+                                <th class="px-4 pb-2">Revision Number</th>
+                                <th class="px-4 pb-2">Effectivity Date</th>
+                                <th class="px-4 pb-2">Owner</th>
+                                <th class="px-4 pb-2">Type</th>
+                                <th class="px-4 pb-2">Status</th>
+                                <th class="px-4 pb-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="form in filteredForms" :key="form.id" class="border-b hover:bg-gray-100 even:bg-gray-50">
+                                <td class="px-4">{{ form.doc_ref_code }}</td>
+                                <td class="px-4">{{ form.doc_title }}</td>
+                                <td class="px-4">{{ form.revision_num }}</td>
+                                <td class="px-4">{{ form.effectivity_date }}</td>
+                                <td class="px-4">{{ form.owner }}</td>
+                                <td class="px-4">{{ form.doc_type }}</td>
+                                <td class="px-4">{{ form.status }}</td>
+                                <td>
+                                <div class="flex space-x-1">
+                                    <ShowForm :form="form"/>
+                                    <EditForm v-if="isAdmin" :form="form" />
+                                    <DeleteForm v-if="isAdmin" :form="form" />
+                                </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>
           </div>
         </div>
