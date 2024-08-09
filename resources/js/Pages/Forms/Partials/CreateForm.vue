@@ -61,7 +61,7 @@ const submit = () => {
 <template>
     <div>
         <!-- Button to trigger modal -->
-        <PrimaryButton @click="showModal">Create New Document</PrimaryButton>
+        <PrimaryButton @click="showModal"><i class="fa fa-plus mr-2"></i>Create New Document</PrimaryButton>
 
         <!-- Modal for creating new document -->
         <BiggerModal :show="creatingDocument" @close="closeModal">
@@ -144,17 +144,6 @@ const submit = () => {
                                 />
                             </div>
                             <div>
-                                <InputLabel for="status" value="Status"/>
-                                <TextInput
-                                    id="status"
-                                    v-model="form.status"
-                                    type="text"
-                                    placeholder="Enter Status"
-                                    class="bg-gray-100"
-                                    disabled
-                                />
-                            </div>
-                            <div>
                                 <InputLabel for="doc_type" value="Document Type"/>
                                 <select
                                     id="doc_type"
@@ -202,16 +191,6 @@ const submit = () => {
                                 />
                             </div>
                             <div>
-                                <InputLabel for="requester" value="Requester"/>
-                                <TextInput
-                                    id="requester"
-                                    v-model="form.requester"
-                                    type="text"
-                                    placeholder="Enter Requester"
-                                    required
-                                />
-                            </div>
-                            <div>
                                 <InputLabel for="request_date" value="Request Date"/>
                                 <TextInput
                                     id="request_date"
@@ -219,6 +198,17 @@ const submit = () => {
                                     type="date"
                                     placeholder="Enter Request Date"
                                     required
+                                />
+                            </div>
+                            <div>
+                                <InputLabel for="status" value="Status"/>
+                                <TextInput
+                                    id="status"
+                                    v-model="form.status"
+                                    type="text"
+                                    placeholder="Enter Status"
+                                    class="bg-gray-100"
+                                    disabled
                                 />
                             </div>
                             <div>

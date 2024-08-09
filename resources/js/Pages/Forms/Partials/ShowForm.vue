@@ -93,10 +93,6 @@ const closeModal = () => {
                         <span>{{ props.form.request_reason }}</span>
                     </div>
                     <div class="flex items-center mb-4">
-                        <DisplayLabel :value="'Requester:'" class="mr-2"/>
-                        <span>{{ props.form.requester }}</span>
-                    </div>
-                    <div class="flex items-center mb-4">
                         <DisplayLabel :value="'Request Date:'" class="mr-2"/>
                         <span>{{ props.form.request_date }}</span>
                     </div>
